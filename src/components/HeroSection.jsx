@@ -28,35 +28,32 @@ const HeroSection = () => {
     { number: '95%', label: 'Success Rate' }
   ];
 
-  return (
-    <section className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 overflow-hidden">
+  return (    <section className="relative overflow-hidden" style={{background: 'linear-gradient(135deg, var(--color-primary-50), var(--color-neutral-50), var(--color-secondary-50))'}}>
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full opacity-50"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-green-100 rounded-full opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-200 to-green-200 rounded-full opacity-20"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-50" style={{backgroundColor: 'var(--color-primary-100)'}}></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-50" style={{backgroundColor: 'var(--color-secondary-100)'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-20" style={{background: 'linear-gradient(135deg, var(--color-primary-200), var(--color-secondary-200))'}}></div>
       </div>
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
           {/* Content */}
-          <div className="space-y-8">
-            <motion.div {...fadeInUp}>
-              <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-4">
+          <div className="space-y-8">            <motion.div {...fadeInUp}>
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{backgroundColor: 'var(--color-primary-100)', color: 'var(--color-primary-800)'}}>
                 🚀 Welcome to MIT ADT PBL
               </span>
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight" style={{color: 'var(--color-neutral-900)'}}>
                 Learn by{' '}
-                <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+                <span style={{background: 'linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600))', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>
                   Building
                 </span>{' '}
                 Real Projects
               </h1>
-            </motion.div>
-
-            <motion.p 
+            </motion.div>            <motion.p 
               {...fadeInUpDelay}
-              className="text-xl text-gray-600 leading-relaxed max-w-lg"
+              className="text-xl leading-relaxed max-w-lg"
+              style={{color: 'var(--color-neutral-600)'}}
             >
               Experience hands-on learning through innovative Project-Based Learning methodology. 
               Develop practical skills, work on real-world challenges, and build a portfolio 
@@ -85,18 +82,17 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8"
             >
-              {stats.map((stat, index) => (
-                <motion.div
+              {stats.map((stat, index) => (                <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-1">
+                  <div className="text-2xl lg:text-3xl font-bold mb-1" style={{color: 'var(--color-primary-600)'}}>
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-sm" style={{color: 'var(--color-neutral-600)'}}>{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -112,50 +108,47 @@ const HeroSection = () => {
             <div className="relative z-10">
               {/* Main illustration container */}
               <div className="bg-white rounded-2xl shadow-2xl p-8 transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                <div className="space-y-6">
-                  {/* Code editor mockup */}
-                  <div className="bg-gray-900 rounded-lg p-4">
+                <div className="space-y-6">                  {/* Code editor mockup */}
+                  <div className="rounded-lg p-4" style={{backgroundColor: 'var(--color-neutral-900)'}}>
                     <div className="flex space-x-2 mb-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'var(--color-error)'}}></div>
+                      <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'var(--color-warning)'}}></div>
+                      <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'var(--color-success)'}}></div>
                     </div>
                     <div className="space-y-2">
-                      <div className="h-2 bg-blue-400 rounded w-3/4"></div>
-                      <div className="h-2 bg-green-400 rounded w-1/2"></div>
-                      <div className="h-2 bg-purple-400 rounded w-2/3"></div>
-                      <div className="h-2 bg-yellow-400 rounded w-1/3"></div>
+                      <div className="h-2 rounded w-3/4" style={{backgroundColor: 'var(--color-primary-400)'}}></div>
+                      <div className="h-2 rounded w-1/2" style={{backgroundColor: 'var(--color-secondary-400)'}}></div>
+                      <div className="h-2 rounded w-2/3" style={{backgroundColor: 'var(--color-info)'}}></div>
+                      <div className="h-2 rounded w-1/3" style={{backgroundColor: 'var(--color-warning)'}}></div>
                     </div>
-                  </div>
-
-                  {/* Project cards */}
+                  </div>                  {/* Project cards */}
                   <div className="grid grid-cols-2 gap-4">
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg"
+                      className="p-4 rounded-lg"
+                      style={{background: 'linear-gradient(135deg, var(--color-primary-50), var(--color-primary-100))'}}
                     >
-                      <div className="w-8 h-8 bg-blue-500 rounded-lg mb-2"></div>
-                      <div className="h-2 bg-blue-300 rounded mb-1"></div>
-                      <div className="h-2 bg-blue-200 rounded w-2/3"></div>
+                      <div className="w-8 h-8 rounded-lg mb-2" style={{backgroundColor: 'var(--color-primary-500)'}}></div>
+                      <div className="h-2 rounded mb-1" style={{backgroundColor: 'var(--color-primary-300)'}}></div>
+                      <div className="h-2 rounded w-2/3" style={{backgroundColor: 'var(--color-primary-200)'}}></div>
                     </motion.div>
                     <motion.div 
                       whileHover={{ scale: 1.05 }}
-                      className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg"
+                      className="p-4 rounded-lg"
+                      style={{background: 'linear-gradient(135deg, var(--color-secondary-50), var(--color-secondary-100))'}}
                     >
-                      <div className="w-8 h-8 bg-green-500 rounded-lg mb-2"></div>
-                      <div className="h-2 bg-green-300 rounded mb-1"></div>
-                      <div className="h-2 bg-green-200 rounded w-2/3"></div>
+                      <div className="w-8 h-8 rounded-lg mb-2" style={{backgroundColor: 'var(--color-secondary-500)'}}></div>
+                      <div className="h-2 rounded mb-1" style={{backgroundColor: 'var(--color-secondary-300)'}}></div>
+                      <div className="h-2 rounded w-2/3" style={{backgroundColor: 'var(--color-secondary-200)'}}></div>
                     </motion.div>
-                  </div>
-
-                  {/* Progress indicators */}
+                  </div>                  {/* Progress indicators */}
                   <div className="flex justify-between items-center">
-                    <div className="text-sm text-gray-600">Project Progress</div>
+                    <div className="text-sm" style={{color: 'var(--color-neutral-600)'}}>Project Progress</div>
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      <div className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-success)'}}></div>
+                      <div className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-success)'}}></div>
+                      <div className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-success)'}}></div>
+                      <div className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-neutral-300)'}}></div>
                     </div>
                   </div>
                 </div>
@@ -177,10 +170,8 @@ const HeroSection = () => {
               >
                 🎯
               </motion.div>
-            </div>
-
-            {/* Background decoration */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-200 to-green-200 rounded-2xl opacity-20 blur-lg"></div>
+            </div>            {/* Background decoration */}
+            <div className="absolute -inset-4 rounded-2xl opacity-20 blur-lg" style={{background: 'linear-gradient(135deg, var(--color-primary-200), var(--color-secondary-200))'}}></div>
           </motion.div>
         </div>
       </div>
