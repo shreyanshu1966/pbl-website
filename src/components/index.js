@@ -16,6 +16,8 @@ export { default as Footer } from './Footer';
 export { default as Button } from './Button';
 export { default as Icon } from './Icon';
 export { default as Form } from './Form';
+export { default as SearchComponent } from './SearchComponent';
+export { default as PlaceholderImage } from './PlaceholderImage';
 
 // Card components
 export { default as Card } from './Card';
