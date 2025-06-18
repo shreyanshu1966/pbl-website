@@ -11,10 +11,9 @@ const Footer = () => {
       { name: 'About', href: '/about' },
       { name: 'Projects', href: '/projects' },
       { name: 'Contact', href: '/contact' },
-    ],
-    resources: [
-      { name: 'Documentation', href: '/docs' },
-      { name: 'Guidelines', href: '/guidelines' },
+    ],    resources: [
+      { name: 'Documentation', href: '/documentation' },
+      { name: 'Guidelines', href: '/resources?tab=guidelines' },
       { name: 'FAQs', href: '/faqs' },
       { name: 'Support', href: '/support' },
     ],
@@ -45,7 +44,6 @@ const Footer = () => {
       </svg>
     );
   };
-
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container py-12">
@@ -53,13 +51,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">PBL</span>
               </div>
-              <span className="text-xl font-bold">MIT ADT PBL</span>
+              <span className="text-xl font-bold">MIT ADTU PBL</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Empowering students through Project-Based Learning at MIT Academy of Engineering, 
+              Empowering students through Project-Based Learning at MIT ADT University Loni Kalbhor, 
               fostering innovation and practical skills for the future.
             </p>
             
@@ -69,7 +67,7 @@ const Footer = () => {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  className="text-gray-400 hover:text-purple-400 transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   target={link.href.startsWith('http') ? '_blank' : '_self'}
@@ -84,13 +82,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-purple-300">Quick Links</h3>
             <ul className="space-y-3">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-purple-300 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -101,13 +99,13 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4 text-purple-300">Resources</h3>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-purple-300 transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -118,16 +116,16 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4 text-purple-300">Contact</h3>
             <div className="space-y-3 text-gray-400">
               <div>
-                <p className="font-medium">MIT Academy of Engineering</p>
-                <p>Alandi (D), Pune - 412105</p>
+                <p className="font-medium text-white">MIT ADTU Loni Kalbhor</p>
+                <p>Loni Kalbhor, Pune - 412201</p>
                 <p>Maharashtra, India</p>
               </div>
               <div>
-                <p>Phone: +91-20-2668-8000</p>
-                <p>Email: info@mitadt.edu.in</p>
+                <p>Phone: +91-20-3084-4200</p>
+                <p>Email: pbl@mitadt.edu.in</p>
               </div>
             </div>
           </div>
@@ -136,13 +134,13 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} MIT Academy of Engineering. All rights reserved.
+            © {currentYear} MIT ADT University Loni Kalbhor. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
-            <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <Link to="/privacy" className="text-gray-400 hover:text-purple-300 transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <Link to="/terms" className="text-gray-400 hover:text-purple-300 transition-colors duration-200">
               Terms of Service
             </Link>
           </div>

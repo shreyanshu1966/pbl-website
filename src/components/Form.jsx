@@ -1,6 +1,7 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useState, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Icon from './Icon';
+import { validateField, validateFile } from '../utils/formUtils';
 
 // Form Field Wrapper
 export const FormField = ({ 
@@ -198,6 +199,210 @@ export const FileUpload = forwardRef(({
 
 FileUpload.displayName = 'FileUpload';
 
+// File Upload Component with Preview and Validation
+export const EnhancedFileUpload = forwardRef(({ 
+  accept = "image/*,application/pdf",
+  multiple = false,
+  maxSize = 5 * 1024 * 1024, // 5MB
+  maxFiles = 5,
+  className = '',
+  onChange,
+  value,
+  error,
+  ...props 
+}, ref) => {
+  const [files, setFiles] = useState(value || []);
+  const [dragActive, setDragActive] = useState(false);
+  const [fileErrors, setFileErrors] = useState([]);
+  const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    if (value) {
+      setFiles(Array.isArray(value) ? value : [value]);
+    }
+  }, [value]);
+
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    const newFiles = Array.from(e.target.files || []);
+    processFiles(newFiles);
+  };
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else if (e.type === 'dragleave') {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const newFiles = Array.from(e.dataTransfer.files);
+      processFiles(newFiles);
+    }
+  };
+
+  const processFiles = (newFiles) => {
+    // Validate files
+    const errors = [];
+    const validFiles = [];
+
+    // Check max files
+    if (!multiple && newFiles.length > 1) {
+      errors.push('Only one file can be uploaded');
+      newFiles = newFiles.slice(0, 1);
+    }
+
+    if (multiple && newFiles.length + files.length > maxFiles) {
+      errors.push(`Maximum ${maxFiles} files allowed`);
+      newFiles = newFiles.slice(0, maxFiles - files.length);
+    }
+
+    // Check each file
+    newFiles.forEach(file => {
+      const fileSize = file.size;
+      const fileType = file.type;
+      const acceptedTypes = accept.split(',').map(type => type.trim());
+      
+      if (fileSize > maxSize) {
+        errors.push(`File "${file.name}" exceeds the maximum size of ${maxSize / (1024 * 1024)}MB`);
+      } else if (!acceptedTypes.some(type => {
+        if (type.endsWith('/*')) {
+          const baseType = type.replace('/*', '');
+          return fileType.startsWith(baseType);
+        }
+        return type === fileType || type === '*';
+      })) {
+        errors.push(`File "${file.name}" has an invalid file type`);
+      } else {
+        // Create a preview URL
+        file.preview = URL.createObjectURL(file);
+        validFiles.push(file);
+      }
+    });
+
+    // Update state and call onChange
+    if (validFiles.length > 0) {
+      const updatedFiles = multiple ? [...files, ...validFiles] : validFiles;
+      setFiles(updatedFiles);
+      if (onChange) {
+        onChange(multiple ? updatedFiles : updatedFiles[0]);
+      }
+    }
+
+    setFileErrors(errors);
+  };
+
+  const removeFile = (indexToRemove) => {
+    const updatedFiles = files.filter((_, index) => index !== indexToRemove);
+    setFiles(updatedFiles);
+    if (onChange) {
+      onChange(multiple ? updatedFiles : updatedFiles[0] || null);
+    }
+  };
+
+  return (
+    <div className={`file-upload-enhanced ${dragActive ? 'file-upload-active' : ''} ${error || fileErrors.length > 0 ? 'file-upload-error' : ''} ${className}`}>
+      <div 
+        className="file-upload-dropzone"
+        onDragEnter={handleDrag}
+        onDragLeave={handleDrag}
+        onDragOver={handleDrag}
+        onDrop={handleDrop}
+        onClick={() => fileInputRef.current?.click()}
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept={accept}
+          multiple={multiple}
+          className="file-upload-input"
+          onChange={handleFileChange}
+          {...props}
+        />
+        
+        <div className="file-upload-content">
+          <Icon name="upload-cloud" size={40} className="file-upload-icon" />
+          <div className="file-upload-text">
+            <span className="file-upload-title">
+              {dragActive ? 'Drop files to upload' : 'Click or drag files to upload'}
+            </span>
+            <span className="file-upload-subtitle">
+              {multiple 
+                ? `Up to ${maxFiles} files, max ${maxSize / (1024 * 1024)}MB each` 
+                : `Max file size: ${maxSize / (1024 * 1024)}MB`}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* File errors */}
+      {fileErrors.length > 0 && (
+        <div className="file-upload-errors">
+          {fileErrors.map((error, index) => (
+            <div key={index} className="file-upload-error-message">
+              <Icon name="alert-circle" size={16} className="mr-2" />
+              {error}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Display error from props */}
+      {error && (
+        <div className="file-upload-errors">
+          <div className="file-upload-error-message">
+            <Icon name="alert-circle" size={16} className="mr-2" />
+            {error}
+          </div>
+        </div>
+      )}
+
+      {/* File Preview */}
+      {files.length > 0 && (
+        <div className="file-upload-preview">
+          {files.map((file, index) => (
+            <div key={index} className="file-upload-preview-item">
+              {file.type.startsWith('image/') ? (
+                <div className="file-upload-preview-image">
+                  <img src={file.preview} alt={file.name} />
+                </div>
+              ) : (
+                <div className="file-upload-preview-icon">
+                  <Icon name={file.type.includes('pdf') ? 'file-text' : 'file'} size={24} />
+                </div>
+              )}
+              <div className="file-upload-preview-info">
+                <div className="file-upload-preview-name">{file.name}</div>
+                <div className="file-upload-preview-size">{(file.size / 1024).toFixed(1)}KB</div>
+              </div>
+              <button 
+                type="button" 
+                className="file-upload-preview-remove"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFile(index);
+                }}
+              >
+                <Icon name="x" size={16} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+});
+
+EnhancedFileUpload.displayName = 'EnhancedFileUpload';
+
 // Form Components with React Hook Form integration
 export const FormInput = ({ name, rules, ...props }) => {
   const { register, formState: { errors } } = useFormContext();
@@ -267,6 +472,19 @@ export const FormFileUpload = ({ name, rules, ...props }) => {
 
   return (
     <FileUpload
+      {...register(name, rules)}
+      error={!!error}
+      {...props}
+    />
+  );
+};
+
+export const FormEnhancedFileUpload = ({ name, rules, ...props }) => {
+  const { register, formState: { errors } } = useFormContext();
+  const error = errors[name];
+
+  return (
+    <EnhancedFileUpload
       {...register(name, rules)}
       error={!!error}
       {...props}
@@ -359,4 +577,21 @@ export const ContactForm = ({ onSubmit, className = '' }) => {
   );
 };
 
-export default FormField;
+// Create Form object with all subcomponents
+const Form = {
+  Field: FormField,
+  Label: ({ children, className = '', ...props }) => (
+    <label className={`block text-sm font-medium text-gray-700 mb-1 ${className}`} {...props}>
+      {children}
+    </label>
+  ),
+  Input,
+  Textarea,
+  Select,
+  Checkbox,
+  Radio,
+  FileUpload,
+  EnhancedFileUpload
+};
+
+export default Form;

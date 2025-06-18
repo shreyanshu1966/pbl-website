@@ -1,48 +1,97 @@
 @import "tailwindcss";
 
-/* Design Tokens & CSS Variables */
+/* MIT ADT University Design Tokens & CSS Variables */
 :root {
-  /* Primary Color Palette */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
+  /* MIT ADT Brand Colors */
+  --color-primary-purple: #522d7d;      /* Deep Purple - headers, main navigation, primary buttons */
+  --color-secondary-purple: #9c418c;    /* Bright Purple - accents, links, hover states */
+  --color-accent-orange: #ed8042;       /* Warm Orange - CTAs, highlights, important elements */
+  --color-success-green: #119b7a;       /* Teal Green - success indicators, achievements */
+  --color-neutral-gold: #b18732;        /* Golden - awards, certifications, premium content */
+  
+  /* Neutral/Gray Colors for text and backgrounds */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
 
-  /* Secondary Color Palette */
-  --color-secondary-50: #f0fdf4;
-  --color-secondary-100: #dcfce7;
-  --color-secondary-200: #bbf7d0;
-  --color-secondary-300: #86efac;
-  --color-secondary-400: #4ade80;
-  --color-secondary-500: #22c55e;
-  --color-secondary-600: #16a34a;
-  --color-secondary-700: #15803d;
-  --color-secondary-800: #166534;
-  --color-secondary-900: #14532d;
+  /* MIT ADT Color Variations for UI Consistency */
+  --color-primary-50: #f3f0f8;
+  --color-primary-100: #e3dbed;
+  --color-primary-200: #c8b8da;
+  --color-primary-300: #ad95c7;
+  --color-primary-400: #8f6ca8;
+  --color-primary-500: #522d7d;         /* Primary Purple */
+  --color-primary-600: #472569;
+  --color-primary-700: #3c1e55;
+  --color-primary-800: #311741;
+  --color-primary-900: #26102d;
 
-  /* Neutral Color Palette */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
+  /* Secondary Purple Variations */
+  --color-secondary-50: #f8f1f7;
+  --color-secondary-100: #eedde8;
+  --color-secondary-200: #ddbcd1;
+  --color-secondary-300: #cc9aba;
+  --color-secondary-400: #b46da3;
+  --color-secondary-500: #9c418c;       /* Secondary Purple */
+  --color-secondary-600: #853777;
+  --color-secondary-700: #6e2e62;
+  --color-secondary-800: #57244d;
+  --color-secondary-900: #401b38;
 
-  /* Semantic Colors */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
+  /* Accent Orange Variations */
+  --color-accent-50: #fef7f2;
+  --color-accent-100: #fdeadc;
+  --color-accent-200: #fad0b3;
+  --color-accent-300: #f7b68a;
+  --color-accent-400: #f19c61;
+  --color-accent-500: #ed8042;         /* Accent Orange */
+  --color-accent-600: #d46a2f;
+  --color-accent-700: #b85527;
+  --color-accent-800: #9c411f;
+  --color-accent-900: #803317;
+
+  /* Success Green Variations */
+  --color-success-50: #f0fdf9;
+  --color-success-100: #ccfbef;
+  --color-success-200: #99f6e4;
+  --color-success-300: #5eead4;
+  --color-success-400: #2dd4bf;
+  --color-success-500: #119b7a;         /* Success Green */
+  --color-success-600: #0f8269;
+  --color-success-700: #0d6957;
+  --color-success-800: #0a5045;
+  --color-success-900: #083733;
+
+  /* Neutral Gold Variations */
+  --color-gold-50: #fdf8f1;
+  --color-gold-100: #faecd6;
+  --color-gold-200: #f4d5a7;
+  --color-gold-300: #eebe78;
+  --color-gold-400: #d4a555;
+  --color-gold-500: #b18732;           /* Neutral Gold */
+  --color-gold-600: #9a7329;
+  --color-gold-700: #835f22;
+  --color-gold-800: #6c4b1b;
+  --color-gold-900: #553714;
+
+  /* MIT ADT Background Colors */
+  --color-bg-light: #f8f9fa;           /* Light gray background */
+  --color-bg-white: #ffffff;           /* White background */
+  --color-bg-dark: #1a1a1a;            /* Dark sections */
+  --color-bg-gradient-primary: linear-gradient(135deg, var(--color-primary-purple), var(--color-accent-orange));
+  --color-bg-gradient-secondary: linear-gradient(135deg, var(--color-secondary-purple), var(--color-accent-orange));
+  /* MIT ADT Semantic Colors */
+  --color-success: var(--color-success-green);    /* #119b7a */
+  --color-warning: var(--color-accent-orange);    /* #ed8042 */
   --color-error: #ef4444;
-  --color-info: #3b82f6;
+  --color-info: var(--color-primary-purple);      /* #522d7d */
 
   /* Typography */
   --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -98,6 +147,40 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-neutral-900);
 }
 
+/* Ensure proper text contrast for dark sections */
+.bg-gray-900 {
+  background-color: #1f2937 !important;
+}
+
+.bg-gray-900 * {
+  color: #f9fafb;
+}
+
+.bg-gray-900 h1, .bg-gray-900 h2, .bg-gray-900 h3, .bg-gray-900 h4, .bg-gray-900 h5, .bg-gray-900 h6 {
+  color: #ffffff !important;
+}
+
+.bg-gray-900 .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.bg-gray-900 .text-white {
+  color: #ffffff !important;
+}
+
+/* MIT ADT Brand Gradient Backgrounds */
+.mit-adt-gradient {
+  background: linear-gradient(135deg, var(--color-primary-purple) 0%, var(--color-secondary-purple) 50%, var(--color-accent-orange) 100%);
+}
+
+.mit-adt-gradient * {
+  color: white !important;
+}
+
+.mit-adt-gradient h1, .mit-adt-gradient h2, .mit-adt-gradient h3, .mit-adt-gradient h4, .mit-adt-gradient h5, .mit-adt-gradient h6 {
+  color: white !important;
+}
+
 /* Utility Classes */
 .container {
   max-width: 1200px;
@@ -119,19 +202,68 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
 }
 
+/* Ensure buttons are always visible */
+button, .btn, a.btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* White/Light buttons on dark backgrounds */
+.bg-gray-900 .btn-primary,
+.bg-gray-900 button,
+.mit-adt-gradient .btn-primary,
+.mit-adt-gradient button {
+  background-color: white !important;
+  color: var(--color-primary-purple) !important;
+  border: 2px solid white !important;
+}
+
+.bg-gray-900 .btn-primary:hover,
+.bg-gray-900 button:hover,
+.mit-adt-gradient .btn-primary:hover,
+.mit-adt-gradient button:hover {
+  background-color: var(--color-primary-purple) !important;
+  color: white !important;
+  border-color: var(--color-primary-purple) !important;
+}
+
+/* Outline buttons on dark backgrounds */
+.bg-gray-900 .btn-outline,
+.mit-adt-gradient .btn-outline {
+  background-color: transparent !important;
+  color: white !important;
+  border: 2px solid white !important;
+}
+
+.bg-gray-900 .btn-outline:hover,
+.mit-adt-gradient .btn-outline:hover {
+  background-color: white !important;
+  color: var(--color-primary-purple) !important;
+}
+
 .btn-primary {
-  background-color: var(--color-primary-600);
-  color: white;
+  background-color: var(--color-primary-purple) !important;
+  color: white !important;
+  border: none !important;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-700);
+  background-color: var(--color-primary-700) !important;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-  background-color: var(--color-secondary-600);
+  background-color: var(--color-secondary-purple);
   color: white;
 }
 
@@ -143,40 +275,62 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--color-primary-600);
-  border: 2px solid var(--color-primary-600);
+  color: var(--color-primary-purple);
+  border: 2px solid var(--color-primary-purple);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary-600);
+  background-color: var(--color-primary-purple);
   color: white;
 }
 
-/* Additional Button Variants */
+/* MIT ADT CTA Button with Brand Gradient */
 .btn-cta {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600));
-  color: white;
+  background: var(--color-bg-gradient-primary) !important;
+  color: white !important;
   padding: var(--spacing-md) var(--spacing-xl);
   font-size: 1rem;
   font-weight: 600;
   box-shadow: var(--shadow-lg);
+  border: none !important;
 }
 
 .btn-cta:hover {
-  background: linear-gradient(135deg, var(--color-primary-700), var(--color-secondary-700));
+  background: linear-gradient(135deg, var(--color-primary-700), var(--color-accent-600)) !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-xl);
 }
 
-.btn-ghost {
-  background-color: transparent;
-  color: var(--color-neutral-700);
-  border: 1px solid transparent;
+/* MIT ADT Button Hover Effects */
+.btn-cta-white:hover {
+  background-color: #f3f4f6 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.btn-ghost:hover {
-  background-color: var(--color-neutral-100);
-  color: var(--color-neutral-900);
+.btn-outline-white:hover {
+  background-color: white !important;
+  color: var(--color-primary-purple) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure MIT ADT gradient backgrounds work correctly */
+.mit-adt-gradient {
+  background: linear-gradient(135deg, var(--color-primary-purple), var(--color-accent-orange));
+}
+
+.mit-adt-gradient-secondary {
+  background: linear-gradient(135deg, var(--color-secondary-purple), var(--color-accent-orange));
+}
+
+/* Fix any purple shade issues */
+.text-purple-light {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.text-purple-fade {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Button Sizes */
@@ -944,58 +1098,278 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Image Optimization Styles */
-.lazy {
-  opacity: 0;
-  transition: opacity var(--transition-normal);
+/* Responsive Utility Classes */
+.container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.lazy.loaded {
-  opacity: 1;
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-.image-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--color-neutral-100), var(--color-neutral-200));
-  color: var(--color-neutral-500);
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  border: 2px dashed var(--color-neutral-300);
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
-/* Icon Styles */
-.icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
 }
 
-/* Responsive Utilities */
-.responsive-grid {
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Mobile-first responsive design improvements */
+.hero-section {
+  padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 4rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 6rem 0;
+  }
+}
+
+/* Grid responsive utilities */
+.grid-responsive {
   display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
-.responsive-grid-2 {
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.responsive-grid-3 {
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.responsive-grid-4 {
+@media (min-width: 1280px) {
+  .grid-responsive {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive text utilities */
+.text-responsive-sm {
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-sm {
+    font-size: 1rem;
+  }
+}
+
+.text-responsive-lg {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-lg {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-lg {
+    font-size: 1.5rem;
+  }
+}
+
+.text-responsive-xl {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-xl {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-xl {
+    font-size: 2.5rem;
+  }
+}
+
+.text-responsive-2xl {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .text-responsive-2xl {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-2xl {
+    font-size: 4rem;
+  }
+}
+
+/* Button responsive improvements */
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Card responsive improvements */
+.card {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 1023px) {
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 50;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+}
+
+/* Explicit hamburger menu visibility rules */
+.mobile-menu-button {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none !important;
+  }
+}
+
+/* Ensure desktop navigation is visible */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+}
+
+/* Image responsive utilities */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.img-aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.img-aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+/* Gallery responsive grid */
+.gallery-grid {
   display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 /* Animation Utilities */
@@ -1068,6 +1442,68 @@ h1, h2, h3, h4, h5, h6 {
   animation: spin 1s ease-in-out infinite;
 }
 
+/* Footer Styles - Ensure proper contrast and text colors */
+footer {
+  background-color: #1f2937 !important; /* Force dark background */
+  padding: 3rem 0 1.5rem 0 !important; /* Add proper padding */
+}
+
+footer .container {
+  padding: 0 1.5rem !important; /* Add horizontal padding */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer * {
+  color: #f9fafb !important; /* Force light text for all footer content */
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+  color: #e0e7ff !important; /* Light purple tint for headings */
+  margin-bottom: 1rem !important;
+}
+
+footer a {
+  color: #d1d5db !important; /* Light gray for links */
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #c084fc !important; /* Purple on hover */
+}
+
+footer .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+footer .text-purple-300 {
+  color: #c084fc !important;
+}
+
+footer .text-purple-400 {
+  color: #c084fc !important;
+}
+
+footer .text-white {
+  color: #ffffff !important;
+}
+
+/* Footer grid spacing */
+footer .grid {
+  margin-bottom: 2rem;
+}
+
+footer .grid > div {
+  margin-bottom: 2rem;
+}
+
+/* Footer bottom bar */
+footer .border-t {
+  border-top: 1px solid #374151 !important;
+  margin-top: 2rem !important;
+  padding-top: 2rem !important;
+}
+
 /* Utility Classes */
 .text-center {
   text-align: center;
@@ -1096,6 +1532,154 @@ h1, h2, h3, h4, h5, h6 {
 .focus-visible {
   outline: 2px solid var(--color-primary-600);
   outline-offset: 2px;
+}
+
+/* Enhanced File Upload Component Styles */
+.file-upload-enhanced {
+  margin-bottom: 1rem;
+}
+
+.file-upload-dropzone {
+  border: 2px dashed var(--color-neutral-300);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--color-neutral-50);
+}
+
+.file-upload-dropzone:hover {
+  border-color: var(--color-primary-400);
+  background-color: var(--color-primary-50);
+}
+
+.file-upload-active {
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-50);
+}
+
+.file-upload-error .file-upload-dropzone {
+  border-color: var(--color-error);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-upload-icon {
+  color: var(--color-neutral-400);
+}
+
+.file-upload-active .file-upload-icon {
+  color: var(--color-primary-500);
+}
+
+.file-upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.file-upload-title {
+  font-weight: 500;
+  color: var(--color-neutral-700);
+}
+
+.file-upload-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-neutral-500);
+}
+
+.file-upload-errors {
+  margin-top: 0.5rem;
+  color: var(--color-error);
+}
+
+.file-upload-error-message {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.file-upload-preview {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.file-upload-preview-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-neutral-100);
+  gap: 0.75rem;
+}
+
+.file-upload-preview-image {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.file-upload-preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-upload-preview-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--color-neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-neutral-600);
+}
+
+.file-upload-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.file-upload-preview-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-neutral-800);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-upload-preview-size {
+  font-size: 0.75rem;
+  color: var(--color-neutral-500);
+}
+
+.file-upload-preview-remove {
+  padding: 0.25rem;
+  border-radius: 9999px;
+  color: var(--color-neutral-500);
+  transition: all 0.2s ease;
+}
+
+.file-upload-preview-remove:hover {
+  background-color: var(--color-neutral-200);
+  color: var(--color-error);
 }
 
 /* Print Styles */
