@@ -1,32 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Icon, Button, Card } from '../components';
 import { getImageUrls } from '../utils/imageUtils';
 
 const MultidisciplinaryProjectsPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedSDG, setSelectedSDG] = useState('all');
-
-  const projectCategories = [
-    { id: 'all', name: 'All Projects', icon: 'grid' },
-    { id: 'healthcare', name: 'Healthcare & Biotech', icon: 'heart' },
-    { id: 'environment', name: 'Environment & Sustainability', icon: 'leaf' },
-    { id: 'education', name: 'Education & Learning', icon: 'book-open' },
-    { id: 'smart-cities', name: 'Smart Cities & Infrastructure', icon: 'building' },
-    { id: 'agriculture', name: 'Agriculture & Food Security', icon: 'wheat' },
-    { id: 'social-innovation', name: 'Social Innovation', icon: 'users' }
-  ];
-
-  const sdgGoals = [
-    { id: 'all', name: 'All SDGs', number: '' },
-    { id: 'sdg3', name: 'Good Health & Well-being', number: '3' },
-    { id: 'sdg4', name: 'Quality Education', number: '4' },
-    { id: 'sdg6', name: 'Clean Water & Sanitation', number: '6' },
-    { id: 'sdg7', name: 'Affordable Clean Energy', number: '7' },
-    { id: 'sdg9', name: 'Industry & Innovation', number: '9' },
-    { id: 'sdg11', name: 'Sustainable Cities', number: '11' },
-    { id: 'sdg13', name: 'Climate Action', number: '13' }
-  ];
 
   const multidisciplinaryProjects = [
     // Healthcare & Biotech
@@ -226,12 +203,12 @@ const MultidisciplinaryProjectsPage = () => {
     }
   ];
   const industryPartners = [
-    { name: 'Tata Group', logo: 'https://logoeps.com/wp-content/uploads/2014/05/tata-group-vector-logo.png', projects: 8 },
-    { name: 'Microsoft', logo: 'https://logoeps.com/wp-content/uploads/2013/03/microsoft-vector-logo.png', projects: 6 },
-    { name: 'Mahindra', logo: 'https://logoeps.com/wp-content/uploads/2014/05/mahindra-vector-logo.png', projects: 5 },
-    { name: 'Apollo Hospitals', logo: 'https://logoeps.com/wp-content/uploads/2014/05/apollo-hospitals-vector-logo.png', projects: 4 },
-    { name: 'Infosys', logo: 'https://logoeps.com/wp-content/uploads/2013/03/infosys-vector-logo.png', projects: 7 },
-    { name: 'Google', logo: 'https://logoeps.com/wp-content/uploads/2014/05/google-vector-logo.png', projects: 3 }
+    { name: 'Tata Group', logo: 'https://imgs.search.brave.com/r57vfM8qIwru_h8n-vYFAyqkp4uphJnqQCnpcHVWdvE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/YnJhbmRmZXRjaC5p/by9pZHRNbVducTdP/L3cvNDAwL2gvNDAw/L3RoZW1lL2Rhcmsv/aWNvbi5qcGVnP2M9/MWJ4aWQ2NE11cDdh/Y3pld1NBWU1YJnQ9/MTY2ODYxMDQyODM0/MA', projects: 8 },
+    { name: 'Microsoft', logo: 'https://imgs.search.brave.com/0pbp3P8htKbbYCb4SPUY8IiI-MAJ2iRnli_G_XpbsQA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni8xMTM3OS8xMTM3/OTA2Ny5wbmc_c2Vt/dD1haXNfaW5jb21p/bmc', projects: 6 },
+    { name: 'Mahindra', logo: 'https://imgs.search.brave.com/Je8PFyE0GumZZteNW8CCuyJdkqCFEyd8reGuDvjacKo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LW1haGluZHJhLWlj/b24tZG93bmxvYWQt/aW4tc3ZnLXBuZy1n/aWYtZmlsZS1mb3Jt/YXRzLS1jb21wYW55/LWxvZ28tYnJhbmQt/YXV0b21vdGl2ZS1w/YWNrLWxvZ29zLWlj/b25zLTI4NzQzODQu/cG5nP2Y9d2VicCZ3/PTI1Ng', projects: 5 },
+    { name: 'Apollo Hospitals', logo: 'https://imgs.search.brave.com/uXjOf7nUMm75sLPXuqXOC0MAhzea600Jxrdsx_VjyBM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pY29u/YXBlLmNvbS93cC1j/b250ZW50L3BuZ19s/b2dvX3ZlY3Rvci9h/cG9sbG8taG9zcGl0/YWxzLWxvZ28ucG5n', projects: 4 },
+    { name: 'Infosys', logo: 'https://imgs.search.brave.com/vGfaMoVmE3c6IxUu7OR4ZOpfmDJAVdrHYobJvhe1A6U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDIwLzE5/MC80NzYvbm9uXzJ4/L2luZm9zeXMtbG9n/by1pbmZvc3lzLWlj/b24tZnJlZS1mcmVl/LXZlY3Rvci5qcGc', projects: 7 },
+    { name: 'Google', logo: 'https://imgs.search.brave.com/U1NdQaNdiGKZi5Al2Q5E2CZ0XTZ34JdVLB5ef5JZ6Xk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni8yOTkxLzI5OTEx/NDgucG5nP3NlbXQ9/YWlzX2h5YnJpZA', projects: 3 }
   ];
 
   const researchAreas = [
@@ -261,12 +238,6 @@ const MultidisciplinaryProjectsPage = () => {
     }
   ];
 
-  const filteredProjects = multidisciplinaryProjects.filter(project => {
-    const categoryMatch = selectedCategory === 'all' || project.category === selectedCategory;
-    const sdgMatch = selectedSDG === 'all' || project.sdg === selectedSDG;
-    return categoryMatch && sdgMatch;
-  });
-
   const getStatusColor = (status) => {
     switch (status) {
       case 'ongoing': return 'text-blue-600 bg-blue-100';
@@ -287,23 +258,13 @@ const MultidisciplinaryProjectsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-yellow-100 mb-6">
               Multidisciplinary Projects
             </h1>
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
               Collaborative projects bringing together diverse disciplines to solve 
               complex global challenges and advance UN Sustainable Development Goals
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="primary" size="lg">
-                <Icon name="play" size={20} className="mr-2" />
-                Watch Project Showcase
-              </Button>
-              <Button variant="outline" size="lg">
-                <Icon name="users" size={20} className="mr-2" />
-                Join a Project
-              </Button>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -356,55 +317,6 @@ const MultidisciplinaryProjectsPage = () => {
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-8 bg-gray-100">
-        <div className="container">
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Filter by Category</h3>
-            <div className="flex flex-wrap gap-3">
-              {projectCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                    selectedCategory === category.id
-                      ? 'bg-purple-600 text-white shadow-md'
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
-                  }`}
-                >
-                  <Icon name={category.icon} size={16} className="mr-2" />
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Filter by SDG Goal</h3>
-            <div className="flex flex-wrap gap-3">
-              {sdgGoals.map((sdg) => (
-                <button
-                  key={sdg.id}
-                  onClick={() => setSelectedSDG(sdg.id)}
-                  className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all text-sm ${
-                    selectedSDG === sdg.id
-                      ? 'bg-orange-500 text-white shadow-md'
-                      : 'bg-white text-gray-600 hover:bg-gray-50'
-                  }`}
-                >
-                  {sdg.number && (
-                    <span className="w-6 h-6 bg-current rounded-full flex items-center justify-center text-xs mr-2">
-                      {sdg.number}
-                    </span>
-                  )}
-                  {sdg.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Projects Grid */}
       <section className="py-20">
         <div className="container">
@@ -418,12 +330,12 @@ const MultidisciplinaryProjectsPage = () => {
               Featured Multidisciplinary Projects
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {filteredProjects.length} projects creating real-world impact through collaboration
+              {multidisciplinaryProjects.length} projects creating real-world impact through collaboration
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {filteredProjects.map((project, index) => (
+            {multidisciplinaryProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -520,10 +432,6 @@ const MultidisciplinaryProjectsPage = () => {
                         <Icon name="external-link" size={16} className="mr-2" />
                         View Details
                       </Button>
-                      <Button variant="outline" className="flex-1">
-                        <Icon name="users" size={16} className="mr-2" />
-                        Join Team
-                      </Button>
                     </div>
                   </div>
                 </Card>
@@ -531,7 +439,7 @@ const MultidisciplinaryProjectsPage = () => {
             ))}
           </div>
 
-          {filteredProjects.length === 0 && (
+          {multidisciplinaryProjects.length === 0 && (
             <div className="text-center py-20">
               <Icon name="search" size={64} className="mx-auto text-gray-400 mb-4" />
               <h3 className="text-xl font-medium text-gray-600 mb-2">No projects found</h3>
@@ -623,35 +531,6 @@ const MultidisciplinaryProjectsPage = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-900">
-        <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Create Global Impact?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Join our multidisciplinary teams and work on projects that address the world's most pressing challenges
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="cta" size="lg">
-                <Icon name="users" size={20} className="mr-2" />
-                Start a Project
-              </Button>
-              <Button variant="outline" size="lg">
-                <Icon name="calendar" size={20} className="mr-2" />
-                Schedule Consultation
-              </Button>
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>

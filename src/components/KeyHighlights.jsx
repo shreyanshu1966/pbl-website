@@ -60,8 +60,7 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl lg:text-4xl font-bold mb-4"
-            style={{color: 'var(--color-neutral-900)'}}
+            className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900"
           >
             Key Highlights
           </motion.h2>
@@ -69,8 +68,7 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl max-w-2xl mx-auto"
-            style={{color: 'var(--color-neutral-600)'}}
+            className="text-xl max-w-2xl mx-auto text-gray-600"
           >
             Stay updated with the latest events, resources, and achievements
           </motion.p>
@@ -82,26 +80,25 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            style={{backgroundColor: 'var(--color-primary-50)', borderLeft: '4px solid var(--color-primary-600)'}}
+            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-purple-50 border-l-4 border-purple-600"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold" style={{color: 'var(--color-primary-800)'}}>
+              <h3 className="text-2xl font-bold text-purple-800">
                 Upcoming Events
               </h3>
-              <Icon name="calendar" size={32} style={{color: 'var(--color-primary-600)'}} />
+              <Icon name="calendar" size={32} className="text-purple-600" />
             </div>
             
             {/* Countdown Timer */}
-            <div className="mb-6 p-4 rounded-lg" style={{backgroundColor: 'var(--color-primary-100)'}}>
-              <div className="text-sm font-medium mb-2" style={{color: 'var(--color-primary-700)'}}>
+            <div className="mb-6 p-4 rounded-lg bg-purple-100">
+              <div className="text-sm font-medium mb-2 text-purple-700">
                 Next Event: Project Showcase 2025
               </div>
               <div className="grid grid-cols-4 gap-2 text-center">
                 {Object.entries(countdownTime).map(([unit, value]) => (
-                  <div key={unit} className="p-2 rounded" style={{backgroundColor: 'var(--color-primary-200)'}}>
-                    <div className="text-lg font-bold" style={{color: 'var(--color-primary-800)'}}>{value}</div>
-                    <div className="text-xs" style={{color: 'var(--color-primary-600)'}}>{unit}</div>
+                  <div key={unit} className="p-2 rounded bg-purple-200">
+                    <div className="text-lg font-bold text-purple-800">{value}</div>
+                    <div className="text-xs text-purple-600">{unit}</div>
                   </div>
                 ))}
               </div>
@@ -109,14 +106,14 @@ const KeyHighlights = () => {
 
             <div className="space-y-3 mb-4">
               {upcomingEvents.map((event, index) => (
-                <div key={index} className="p-3 rounded-lg border border-blue-200 hover:bg-blue-50 transition-colors">
-                  <div className="font-semibold" style={{color: 'var(--color-primary-800)'}}>{event.title}</div>
-                  <div className="text-sm" style={{color: 'var(--color-primary-600)'}}>{event.date} • {event.location}</div>
+                <div key={index} className="p-3 rounded-lg border border-purple-200 hover:bg-purple-50 transition-colors">
+                  <div className="font-semibold text-purple-800">{event.title}</div>
+                  <div className="text-sm text-purple-600">{event.date} • {event.location}</div>
                 </div>
               ))}
             </div>
             
-            <Link to="/events" className="inline-flex items-center font-medium" style={{color: 'var(--color-primary-600)'}}>
+            <Link to="/events" className="inline-flex items-center font-medium text-purple-600 hover:text-purple-700">
               View All Events <Icon name="arrow-right" size={16} className="ml-2" />
             </Link>
           </motion.div>
@@ -126,14 +123,13 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            style={{backgroundColor: 'var(--color-secondary-50)', borderLeft: '4px solid var(--color-secondary-600)'}}
+            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-blue-50 border-l-4 border-blue-600"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold" style={{color: 'var(--color-secondary-800)'}}>
+              <h3 className="text-2xl font-bold text-blue-800">
                 Latest Downloads
               </h3>
-              <Icon name="download" size={32} style={{color: 'var(--color-secondary-600)'}} />
+              <Icon name="download" size={32} className="text-blue-600" />
             </div>
             
             <div className="space-y-4 mb-6">
@@ -142,17 +138,17 @@ const KeyHighlights = () => {
                 { name: 'Industry Guidelines PDF', size: '1.8 MB', downloads: '892' },
                 { name: 'Assessment Rubric', size: '0.9 MB', downloads: '654' }
               ].map((file, index) => (
-                <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-green-200 hover:bg-green-50 transition-colors cursor-pointer">
+                <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-blue-200 hover:bg-blue-50 transition-colors cursor-pointer">
                   <div>
-                    <div className="font-semibold" style={{color: 'var(--color-secondary-800)'}}>{file.name}</div>
-                    <div className="text-sm" style={{color: 'var(--color-secondary-600)'}}>{file.size} • {file.downloads} downloads</div>
+                    <div className="font-semibold text-blue-800">{file.name}</div>
+                    <div className="text-sm text-blue-600">{file.size} • {file.downloads} downloads</div>
                   </div>
-                  <Icon name="download" size={20} style={{color: 'var(--color-secondary-600)'}} />
+                  <Icon name="download" size={20} className="text-blue-600" />
                 </div>
               ))}
             </div>
             
-            <Link to="/downloads" className="inline-flex items-center font-medium" style={{color: 'var(--color-secondary-600)'}}>
+            <Link to="/downloads" className="inline-flex items-center font-medium text-blue-600 hover:text-blue-700">
               View All Downloads <Icon name="arrow-right" size={16} className="ml-2" />
             </Link>
           </motion.div>
@@ -162,14 +158,13 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            style={{backgroundColor: 'var(--color-neutral-50)', borderLeft: '4px solid var(--color-warning)'}}
+            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-yellow-50 border-l-4 border-yellow-600"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold" style={{color: 'var(--color-neutral-800)'}}>
+              <h3 className="text-2xl font-bold text-gray-800">
                 Tech Pool Directory
               </h3>
-              <Icon name="database" size={32} style={{color: 'var(--color-warning)'}} />
+              <Icon name="database" size={32} className="text-yellow-600" />
             </div>
             
             <div className="grid grid-cols-2 gap-4 mb-6">
@@ -180,13 +175,13 @@ const KeyHighlights = () => {
                 { category: 'Mobile Apps', count: '31' }
               ].map((tech, index) => (
                 <div key={index} className="p-3 rounded-lg text-center border border-yellow-200 hover:bg-yellow-50 transition-colors">
-                  <div className="text-2xl font-bold" style={{color: 'var(--color-warning)'}}>{tech.count}</div>
-                  <div className="text-sm font-medium" style={{color: 'var(--color-neutral-600)'}}>{tech.category}</div>
+                  <div className="text-2xl font-bold text-yellow-600">{tech.count}</div>
+                  <div className="text-sm font-medium text-gray-600">{tech.category}</div>
                 </div>
               ))}
             </div>
             
-            <Link to="/tech-pool" className="inline-flex items-center font-medium" style={{color: 'var(--color-warning)'}}>
+            <Link to="/tech-pool" className="inline-flex items-center font-medium text-yellow-600 hover:text-yellow-700">
               Explore Tech Pool <Icon name="arrow-right" size={16} className="ml-2" />
             </Link>
           </motion.div>
@@ -196,8 +191,7 @@ const KeyHighlights = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            style={{backgroundColor: 'var(--color-success)', background: 'linear-gradient(135deg, var(--color-success), var(--color-secondary-600))'}}
+            className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-br from-green-600 to-green-700"
           >
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-white">
@@ -212,9 +206,9 @@ const KeyHighlights = () => {
                 { title: 'Industry Recognition', subtitle: 'Best Student Startup' },
                 { title: 'Research Publication', subtitle: 'IEEE Conference 2025' }
               ].map((achievement, index) => (
-                <div key={index} className="p-3 rounded-lg bg-white bg-opacity-20 text-white">
-                  <div className="font-semibold">{achievement.title}</div>
-                  <div className="text-sm opacity-90">{achievement.subtitle}</div>
+                <div key={index} className="p-3 rounded-lg bg-white bg-opacity-20 border border-white border-opacity-30">
+                  <div className="font-semibold text-yellow-200">{achievement.title}</div>
+                  <div className="text-sm text-green-200">{achievement.subtitle}</div>
                 </div>
               ))}
             </div>

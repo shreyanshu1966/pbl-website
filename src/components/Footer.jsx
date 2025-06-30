@@ -50,10 +50,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">PBL</span>
-              </div>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="/Screenshot 2025-06-30 164434.png" 
+                alt="MIT-ADT University PBL" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.target.src = "/icon.png";
+                }}
+              />
               <span className="text-xl font-bold">MIT ADTU PBL</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">

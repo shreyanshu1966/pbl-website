@@ -25,15 +25,14 @@ const WhyPBLSection = () => {
   ];
 
   return (
-    <section className="py-20" style={{backgroundColor: 'var(--color-neutral-50)'}}>
+    <section className="py-20 bg-gray-50">
       <div className="container">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl lg:text-4xl font-bold mb-4"
-            style={{color: 'var(--color-neutral-900)'}}
+            className="text-3xl lg:text-4xl font-bold mb-4 text-gray-900"
           >
             Why Choose Project-Based Learning?
           </motion.h2>

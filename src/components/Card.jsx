@@ -81,6 +81,7 @@ export const StatCard = ({
   trend,
   trendValue,
   className = '',
+  style = {},
   ...props 
 }) => (
   <Card className={`stat-card ${className}`} {...props}>
@@ -98,8 +99,8 @@ export const StatCard = ({
           </div>
         )}
       </div>
-      <div className="stat-card-number">{number}</div>
-      <div className="stat-card-label">{label}</div>
+      <div className="stat-card-number" style={style}>{number}</div>
+      <div className="stat-card-label" style={style}>{label}</div>
     </div>
   </Card>
 );

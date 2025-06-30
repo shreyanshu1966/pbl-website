@@ -20,7 +20,7 @@ const DocumentationPage = () => {
       title: 'Getting Started with PBL',
       category: 'guides',
       description: 'A comprehensive guide to understanding Project Based Learning methodology and implementation at MIT ADT University.',
-      icon: 'BookOpen',
+      icon: 'book',
       downloadUrl: '#',
       updatedAt: '2025-06-01'
     },
@@ -29,7 +29,7 @@ const DocumentationPage = () => {
       title: 'PBL Project Lifecycle',
       category: 'guides',
       description: 'Learn about the complete project lifecycle from ideation to final presentation and assessment.',
-      icon: 'LifeBuoy',
+      icon: 'loader',
       downloadUrl: '#',
       updatedAt: '2025-06-05'
     },
@@ -38,7 +38,7 @@ const DocumentationPage = () => {
       title: 'Assessment Framework',
       category: 'guides',
       description: 'Detailed explanation of how projects are evaluated and graded with rubrics and examples.',
-      icon: 'CheckSquare',
+      icon: 'check',
       downloadUrl: '#',
       updatedAt: '2025-05-20'
     },
@@ -47,7 +47,7 @@ const DocumentationPage = () => {
       title: 'Project Management API',
       category: 'api',
       description: 'Documentation for the REST API used to manage PBL projects and resources.',
-      icon: 'Code',
+      icon: 'code',
       downloadUrl: '#',
       updatedAt: '2025-06-10'
     },
@@ -56,7 +56,7 @@ const DocumentationPage = () => {
       title: 'Integrating External Tools',
       category: 'api',
       description: 'Learn how to integrate external tools and services with the PBL platform.',
-      icon: 'Link',
+      icon: 'external-link',
       downloadUrl: '#',
       updatedAt: '2025-05-28'
     },
@@ -65,7 +65,7 @@ const DocumentationPage = () => {
       title: 'Creating Your First Project',
       category: 'tutorials',
       description: 'Step-by-step tutorial for creating and setting up your first PBL project.',
-      icon: 'FileText',
+      icon: 'file-text',
       downloadUrl: '#',
       updatedAt: '2025-06-08'
     },
@@ -74,7 +74,7 @@ const DocumentationPage = () => {
       title: 'Team Collaboration Guide',
       category: 'tutorials',
       description: 'Best practices and tools for effective team collaboration in PBL projects.',
-      icon: 'Users',
+      icon: 'users',
       downloadUrl: '#',
       updatedAt: '2025-05-25'
     },
@@ -83,7 +83,7 @@ const DocumentationPage = () => {
       title: 'IoT Project Example',
       category: 'examples',
       description: 'Complete source code and documentation for a sample IoT-based PBL project.',
-      icon: 'Cpu',
+      icon: 'smartphone',
       downloadUrl: '#',
       updatedAt: '2025-06-12'
     },
@@ -92,7 +92,7 @@ const DocumentationPage = () => {
       title: 'Web Application Example',
       category: 'examples',
       description: 'Source code and architecture documentation for a web application PBL project.',
-      icon: 'Globe',
+      icon: 'globe',
       downloadUrl: '#',
       updatedAt: '2025-06-15'
     }
@@ -135,7 +135,7 @@ const DocumentationPage = () => {
           {/* Search and Filters */}
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-between mb-8">
             <div className="relative flex-1 max-w-md">
-              <Icon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Icon name="search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search documentation..."
@@ -189,11 +189,8 @@ const DocumentationPage = () => {
 
                   <div className="mt-auto pt-4 flex gap-2">
                     <Button size="sm" className="flex-1">
-                      <Icon name="Download" size={16} className="mr-2" />
+                      <Icon name="download" size={16} className="mr-2" />
                       Download
-                    </Button>
-                    <Button size="sm" variant="outline">
-                      <Icon name="Eye" size={16} />
                     </Button>
                   </div>
                 </Card>
@@ -203,7 +200,7 @@ const DocumentationPage = () => {
 
           {filteredDocumentation.length === 0 && (
             <div className="text-center py-16">
-              <Icon name="Search" size={64} className="mx-auto text-gray-300 mb-4" />
+              <Icon name="search" size={64} className="mx-auto text-gray-300 mb-4" />
               <h3 className="text-xl font-semibold text-gray-600 mb-2">No documentation found</h3>
               <p className="text-gray-500">
                 Try adjusting your search terms or category filter

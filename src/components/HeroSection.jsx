@@ -28,32 +28,32 @@ const HeroSection = () => {
     { number: '95%', label: 'Success Rate' }
   ];
 
-  return (    <section className="relative overflow-hidden" style={{background: 'linear-gradient(135deg, var(--color-primary-50), var(--color-neutral-50), var(--color-secondary-50))'}}>
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-gray-50 to-blue-50">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-50" style={{backgroundColor: 'var(--color-primary-100)'}}></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full opacity-50" style={{backgroundColor: 'var(--color-secondary-100)'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-20" style={{background: 'linear-gradient(135deg, var(--color-primary-200), var(--color-secondary-200))'}}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-100 rounded-full opacity-50"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full opacity-50"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-20 bg-gradient-to-br from-purple-200 to-blue-200"></div>
       </div>
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
           {/* Content */}
           <div className="space-y-8">            <motion.div {...fadeInUp}>
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{backgroundColor: 'var(--color-primary-100)', color: 'var(--color-primary-800)'}}>
+              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 bg-purple-100 text-purple-800">
                 🚀 Welcome to MIT ADT PBL
               </span>
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight" style={{color: 'var(--color-neutral-900)'}}>
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900">
                 Learn by{' '}
-                <span style={{background: 'linear-gradient(135deg, var(--color-primary-600), var(--color-secondary-600))', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>
+                <span className="bg-gradient-to-r from-purple-800 to-blue-800 bg-clip-text text-transparent">
                   Building
                 </span>{' '}
                 Real Projects
               </h1>
             </motion.div>            <motion.p 
               {...fadeInUpDelay}
-              className="text-xl leading-relaxed max-w-lg"
-              style={{color: 'var(--color-neutral-600)'}}
+              className="text-xl leading-relaxed max-w-lg text-gray-600"
             >
               Experience hands-on learning through innovative Project-Based Learning methodology. 
               Develop practical skills, work on real-world challenges, and build a portfolio 
@@ -73,6 +73,14 @@ const HeroSection = () => {
               >
                 Learn More
               </Link>
+              <a 
+                href="https://mituniversity.ac.in/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-secondary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-gradient-to-r from-orange-500 to-red-600 text-white border-none hover:from-red-600 hover:to-orange-500"
+              >
+                Visit Main Website
+              </a>
             </motion.div>
 
             {/* Stats */}
@@ -89,10 +97,10 @@ const HeroSection = () => {
                   transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-2xl lg:text-3xl font-bold mb-1" style={{color: 'var(--color-primary-600)'}}>
+                  <div className="text-2xl lg:text-3xl font-bold mb-1 text-purple-600">
                     {stat.number}
                   </div>
-                  <div className="text-sm" style={{color: 'var(--color-neutral-600)'}}>{stat.label}</div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

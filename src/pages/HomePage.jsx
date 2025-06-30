@@ -5,8 +5,7 @@ import {
   WhyPBLSection,
   KeyHighlights,
   MissionVisionSection,
-  NewsUpdatesSection,
-  CallToActionSection
+  NewsUpdatesSection
 } from '../components';
 
 const HomePage = () => {
@@ -18,7 +17,6 @@ const HomePage = () => {
       <KeyHighlights />
       <MissionVisionSection />
       <NewsUpdatesSection />
-      <CallToActionSection />
     </div>
   );
 };
