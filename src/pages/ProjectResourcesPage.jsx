@@ -190,11 +190,11 @@ const ProjectResourcesPage = () => {
 
   const getFileIcon = (type) => {
     switch (type) {
-      case 'pdf': return 'FileText';
-      case 'docx': return 'File';
-      case 'pptx': return 'Presentation';
-      case 'xlsx': return 'Sheet';
-      default: return 'Download';
+      case 'pdf': return 'file-text';
+      case 'docx': return 'file';
+      case 'pptx': return 'presentation';
+      case 'xlsx': return 'sheet';
+      default: return 'download';
     }
   };
 
@@ -347,15 +347,15 @@ const ProjectResourcesPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="flex items-center justify-center space-x-2 text-sm text-purple-100 mb-4">
-              <span>Home</span>
-              <Icon name="ChevronRight" size={14} />
-              <span className="text-white font-semibold">Project Resources</span>
+            <div className="flex items-center justify-center space-x-2 text-sm mb-4">
+              <span className="text-blue-200">Home</span>
+              <Icon name="chevron-right" size={14} />
+              <span className="text-yellow-200 font-semibold">Project Resources</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-yellow-100">
               Project Resources
             </h1>
-            <p className="text-xl md:text-2xl text-purple-100 leading-relaxed">
+            <p className="text-xl md:text-2xl leading-relaxed text-blue-100">
               Access templates, guidelines, and connect with experts to support your PBL journey
             </p>
           </motion.div>
@@ -366,9 +366,9 @@ const ProjectResourcesPage = () => {
           <div className="flex justify-center overflow-x-auto py-2">
             <div className="bg-gray-100 rounded-lg p-1 flex flex-nowrap">
               {[
-                { id: 'downloads', label: 'Downloads', icon: 'Download' },
-                { id: 'experts', label: 'Technology Pool', icon: 'Users' },
-                { id: 'guidelines', label: 'Guidelines', icon: 'BookOpen' }
+                { id: 'downloads', label: 'Downloads', icon: 'download' },
+                { id: 'experts', label: 'Technology Pool', icon: 'users' },
+                { id: 'guidelines', label: 'Guidelines', icon: 'book-open' }
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -394,7 +394,7 @@ const ProjectResourcesPage = () => {
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between mb-8">
               <div className="flex items-center gap-4 w-full">
                 <div className="relative flex-1 max-w-md">
-                  <Icon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <Icon name="search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Search resources..."
@@ -403,11 +403,7 @@ const ProjectResourcesPage = () => {
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   />
                 </div>
-                <Button onClick={() => setShowProjectForm(true)}>
-                  <Icon name="Upload" size={18} className="mr-2" />
-                  <span className="hidden sm:inline">Submit Project</span>
-                  <span className="sm:hidden">Upload</span>
-                </Button>
+               
               </div>
 
               <div className="flex flex-wrap gap-2 w-full justify-center lg:justify-end">
@@ -466,16 +462,10 @@ const ProjectResourcesPage = () => {
                     </div>
 
                     <div className="flex gap-2">                      <Button size="sm" className="flex-1" onClick={() => handleDownload(resource.id)}>
-                        <Icon name="Download" size={16} className="mr-2" />
+                        <Icon name="download" size={16} className="mr-2" />
                         Download
                       </Button>
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        onClick={() => window.open(`/api/preview/${resource.id}`, '_blank')}
-                      >
-                        <Icon name="Eye" size={16} />
-                      </Button>
+                      
                     </div>
                   </Card>
                 </motion.div>
@@ -484,7 +474,7 @@ const ProjectResourcesPage = () => {
 
             {getFilteredResources().length === 0 && (
               <div className="text-center py-16">
-                <Icon name="Search" size={64} className="mx-auto text-gray-300 mb-4" />
+                <Icon name="search" size={64} className="mx-auto text-gray-300 mb-4" />
                 <h3 className="text-xl font-semibold text-gray-600 mb-2">No resources found</h3>
                 <p className="text-gray-500">
                   Try adjusting your search terms or category filter
@@ -504,7 +494,7 @@ const ProjectResourcesPage = () => {
                 <p className="text-gray-600">Connect with faculty and industry experts for project guidance</p>
               </div>
               <Button onClick={() => setShowExpertiseForm(true)}>
-                <Icon name="Plus" size={18} className="mr-2" />
+                <Icon name="plus" size={18} className="mr-2" />
                 Submit Expertise
               </Button>
             </div>
@@ -515,7 +505,7 @@ const ProjectResourcesPage = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Search Experts</label>
                   <div className="relative">
-                    <Icon name="Search" size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Icon name="search" size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Search by name or skill..."
@@ -574,7 +564,7 @@ const ProjectResourcesPage = () => {
                     <h3 className="text-lg font-bold text-gray-900 mb-2">{expert.name}</h3>
                     
                     <div className="flex items-center justify-center mb-3">
-                      <Icon name="Star" size={16} className="text-yellow-500 mr-1" />
+                      <Icon name="star" size={16} className="text-yellow-500 mr-1" />
                       <span className="text-sm font-medium text-gray-700">{expert.rating}</span>
                       <span className="text-xs text-gray-500 ml-2 hidden sm:inline">({expert.projects} projects)</span>
                     </div>
@@ -602,11 +592,11 @@ const ProjectResourcesPage = () => {
 
                     <div className="flex gap-2">
                       <Button size="sm" variant="outline" className="flex-1">
-                        <Icon name="MessageCircle" size={14} className="mr-1" />
+                        <Icon name="message-circle" size={14} className="mr-1" />
                         Contact
                       </Button>
                       <Button size="sm" variant="outline">
-                        <Icon name="ExternalLink" size={14} />
+                        <Icon name="external-link" size={14} />
                       </Button>
                     </div>                  </Card>
                 </motion.div>
@@ -615,7 +605,7 @@ const ProjectResourcesPage = () => {
 
             {getFilteredExperts().length === 0 && (
               <div className="text-center py-16">
-                <Icon name="Users" size={64} className="mx-auto text-gray-300 mb-4" />
+                <Icon name="users" size={64} className="mx-auto text-gray-300 mb-4" />
                 <h3 className="text-xl font-semibold text-gray-600 mb-2">No experts found</h3>
                 <p className="text-gray-500">
                   Try adjusting your search filters or skill requirements
@@ -649,37 +639,37 @@ const ProjectResourcesPage = () => {
                   {
                     title: 'Project Planning & Scope Definition',
                     content: 'Learn how to define clear project objectives, scope boundaries, and deliverables. Includes templates for project charter and scope statement.',
-                    icon: 'Target',
+                    icon: 'target',
                     color: 'purple'
                   },
                   {
                     title: 'Team Formation & Collaboration',
                     content: 'Guidelines for forming effective multidisciplinary teams, role assignments, and collaboration best practices.',
-                    icon: 'Users',
+                    icon: 'users',
                     color: 'blue'
                   },
                   {
                     title: 'Research & Literature Review',
                     content: 'Standards for conducting thorough research, citing sources, and building upon existing knowledge in your domain.',
-                    icon: 'BookOpen',
+                    icon: 'book-open',
                     color: 'green'
                   },
                   {
                     title: 'Development & Implementation',
                     content: 'Best practices for project development including coding standards, documentation requirements, and version control.',
-                    icon: 'Code',
+                    icon: 'users',
                     color: 'orange'
                   },
                   {
                     title: 'Testing & Quality Assurance',
                     content: 'Comprehensive testing strategies, quality metrics, and validation procedures to ensure project reliability.',
-                    icon: 'CheckCircle',
+                    icon: 'check-circle',
                     color: 'teal'
                   },
                   {
                     title: 'Documentation & Reporting',
                     content: 'Standards for project documentation, report writing, and presentation preparation with IEEE formatting guidelines.',
-                    icon: 'FileText',
+                    icon: 'file-text',
                     color: 'indigo'
                   }
                 ].map((guideline, index) => (
@@ -708,11 +698,11 @@ const ProjectResourcesPage = () => {
                           <p className="text-gray-600 mb-4">{guideline.content}</p>
                           <div className="flex gap-2">
                             <Button size="sm" variant="outline">
-                              <Icon name="Eye" size={16} className="mr-2" />
+                              <Icon name="eye" size={16} className="mr-2" />
                               View Details
                             </Button>
                             <Button size="sm" variant="outline">
-                              <Icon name="Download" size={16} className="mr-2" />
+                              <Icon name="download" size={16} className="mr-2" />
                               Download PDF
                             </Button>
                           </div>
@@ -736,7 +726,7 @@ const ProjectResourcesPage = () => {
                   onClick={() => setShowExpertiseForm(false)}
                   className="text-gray-400 hover:text-gray-600"
                 >
-                  <Icon name="X" size={24} />
+                  <Icon name="x" size={24} />
                 </button>
               </div>
 

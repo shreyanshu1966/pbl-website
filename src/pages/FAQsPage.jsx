@@ -10,7 +10,7 @@ const FAQItem = ({ question, answer, isOpen, toggleOpen }) => (
     >
       <span className="text-lg pr-8">{question}</span>
       <Icon 
-        name={isOpen ? "ChevronUp" : "ChevronDown"} 
+        name={isOpen ? "chevron-up" : "chevron-down"} 
         size={20} 
         className="text-purple-600 flex-shrink-0"
       />
@@ -182,7 +182,7 @@ const FAQsPage = () => {
         <div className="container max-w-4xl">
           {/* Search */}
           <div className="relative mb-8">
-            <Icon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Icon name="search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
               placeholder="Search FAQs..."
@@ -223,7 +223,7 @@ const FAQsPage = () => {
               ))
             ) : (
               <div className="text-center py-12">
-                <Icon name="Search" size={64} className="mx-auto text-gray-300 mb-4" />
+                <Icon name="search" size={64} className="mx-auto text-gray-300 mb-4" />
                 <h3 className="text-xl font-semibold text-gray-600 mb-2">No matching questions found</h3>
                 <p className="text-gray-500">
                   Try adjusting your search terms or selecting a different category
@@ -242,7 +242,7 @@ const FAQsPage = () => {
               href="/contact" 
               className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700"
             >
-              <Icon name="MessageCircle" size={18} className="mr-2" />
+              <Icon name="message-circle" size={18} className="mr-2" />
               Contact Support
             </a>
           </div>

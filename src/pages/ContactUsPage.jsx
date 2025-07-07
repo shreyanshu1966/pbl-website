@@ -599,10 +599,62 @@ const ContactUsPage = () => {
                       <li>• Student Recreation Areas</li>
                     </ul>
                   </div>
-                  <Button variant="outline" size="lg" className="w-full">
-                    <Icon name="download" size={20} className="mr-2" />
-                    Download Campus Map
-                  </Button>
+                  <div className="space-y-4">
+                    <Button variant="outline" size="lg" className="w-full">
+                      <Icon name="download" size={20} className="mr-2" />
+                      Download Campus Map
+                    </Button>
+                    <Button 
+                      variant="primary" 
+                      size="lg" 
+                      className="w-full"
+                      onClick={() => {
+                        // Open Google Maps with MIT ADT University exact coordinates
+                        const mapUrl = "https://www.google.com/maps/place/MIT+Art,+Design+and+Technology+University/@18.3977,73.9593,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2c06c8f4a7d6b:0x8b6b8f8b8f8b8f8b!8m2!3d18.3977!4d73.9593!16s%2Fm%2F0_6yfzs";
+                        window.open(mapUrl, '_blank');
+                      }}
+                    >
+                      <Icon name="navigation" size={20} className="mr-2" />
+                      Get Directions (GPS)
+                    </Button>
+                    <Button 
+                      variant="success" 
+                      size="lg" 
+                      className="w-full bg-green-600 hover:bg-green-700 text-white"
+                      onClick={() => {
+                        // Try to get user's current location and show directions
+                        if (navigator.geolocation) {
+                          navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                              const { latitude, longitude } = position.coords;
+                              const directionsUrl = `https://www.google.com/maps/dir/${latitude},${longitude}/MIT+Art,+Design+and+Technology+University,+Loni+Kalbhor,+Pune,+Maharashtra+412201/@18.3977,73.9593,12z`;
+                              window.open(directionsUrl, '_blank');
+                            },
+                            (error) => {
+                              // Fallback to regular directions
+                              const directionsUrl = "https://www.google.com/maps/dir//MIT+Art,+Design+and+Technology+University,+Loni+Kalbhor,+Pune,+Maharashtra+412201";
+                              window.open(directionsUrl, '_blank');
+                            }
+                          );
+                        } else {
+                          const directionsUrl = "https://www.google.com/maps/dir//MIT+Art,+Design+and+Technology+University,+Loni+Kalbhor,+Pune,+Maharashtra+412201";
+                          window.open(directionsUrl, '_blank');
+                        }
+                      }}
+                    >
+                      <Icon name="map-pin" size={20} className="mr-2" />
+                      Get Live Directions from My Location
+                    </Button>
+                    <Button 
+                      variant="secondary" 
+                      size="lg" 
+                      className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                      onClick={() => window.open('https://www.iviewd.com/mitadt/', '_blank')}
+                    >
+                      <Icon name="eye" size={20} className="mr-2" />
+                      Virtual Campus Tour (360°)
+                    </Button>
+                  </div>
                 </div>
               </Card>
             </motion.div>

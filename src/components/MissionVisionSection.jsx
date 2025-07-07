@@ -6,7 +6,7 @@ import Icon from './Icon';
 
 const MissionVisionSection = () => {
   return (
-    <section className="py-20 relative overflow-hidden" style={{backgroundColor: 'var(--color-primary-900)'}}>
+    <section className="py-20 relative overflow-hidden bg-purple-900">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-green-800 opacity-90"></div>
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -16,12 +16,12 @@ const MissionVisionSection = () => {
             transition={{ duration: 0.8 }}
             className="text-white"
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8">Our Mission & Vision</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8" style={{ color: 'white' }}>Our Mission & Vision</h2>
             
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                  <Icon name="target" size={24} className="mr-3" />
+                <h3 className="text-2xl font-semibold mb-4 flex items-center" style={{ color: 'white' }}>
+                  <Icon name="target" size={24} className="mr-3 text-w" />
                   Mission
                 </h3>
                 <p className="text-lg text-blue-100 leading-relaxed">
@@ -32,7 +32,7 @@ const MissionVisionSection = () => {
               </div>
               
               <div>
-                <h3 className="text-2xl font-semibold mb-4 flex items-center">
+                <h3 className="text-2xl font-semibold mb-4 flex items-center" style={{ color: 'white' }}>
                   <Icon name="eye" size={24} className="mr-3" />
                   Vision
                 </h3>
@@ -65,31 +65,35 @@ const MissionVisionSection = () => {
                   label="Active Students"
                   icon="graduation-cap"
                   className="bg-white bg-opacity-20 text-white border-none"
+                  style={{ color: '#000000' }}
                 />
                 <StatCard
                   number="50+"
                   label="Projects Completed"
                   icon="project"
                   className="bg-white bg-opacity-20 text-white border-none"
+                  style={{ color: '#000000' }}
                 />
                 <StatCard
                   number="15+"
                   label="Industry Partners"
                   icon="handshake"
                   className="bg-white bg-opacity-20 text-white border-none"
+                  style={{ color: '#000000' }}
                 />
                 <StatCard
                   number="95%"
                   label="Success Rate"
                   icon="chart-bar"
                   className="bg-white bg-opacity-20 text-white border-none"
+                  style={{ color: '#000000' }}
                 />
               </div>
               
               <div className="mt-6 p-4 bg-white bg-opacity-10 rounded-lg">
                 <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">Transform Your Future</div>
-                  <div className="text-blue-200">Through Project-Based Learning</div>
+                  <div className="text-3xl font-bold mb-2" style={{ color: '#000000' }}>Transform Your Future</div>
+                  <div className="text-blue-200" style={{ color: '#000000' }}>Through Project-Based Learning</div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Icon, Button, Card } from '../components';
+import styles from './EventsPage.module.css';
 
 const EventsPage = () => {
   const [activeTab, setActiveTab] = useState('ongoing');
@@ -126,57 +127,51 @@ const EventsPage = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full">
-          <div className="relative">
+        <div className={styles.eventCard}>
+          <div className={styles.eventImageContainer}>
             <img 
               src={event.image} 
               alt={event.title}
-              className="w-full h-48 object-cover"
+              className={styles.eventImage}
             />
-            <div className="absolute top-4 left-4">
-              <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                type === 'ongoing' ? 'bg-green-500 text-white' :
-                type === 'upcoming' ? 'bg-blue-500 text-white' :
-                'bg-gray-500 text-white'
-              }`}>
-                {type === 'ongoing' ? 'Live' : type === 'upcoming' ? 'Upcoming' : 'Completed'}
-              </span>
+            <div className={styles.eventStatus + ' ' + styles[type]}>
+              {type === 'ongoing' ? 'Live' : type === 'upcoming' ? 'Upcoming' : 'Completed'}
             </div>
             {countdown && (
-              <div className="absolute top-4 right-4 bg-black bg-opacity-75 text-white px-3 py-1 rounded text-sm">
+              <div className={styles.eventCountdown}>
                 {countdown.days}d {countdown.hours}h left
               </div>
             )}
           </div>
           
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-purple-600 capitalize">
+          <div className={styles.eventContent}>
+            <div className={styles.eventMeta}>
+              <span className={styles.eventCategory}>
                 {event.category.replace('-', ' ')}
               </span>
-              <div className="flex items-center text-sm text-gray-500">
-                <Icon name="Calendar" size={16} className="mr-1" />
+              <div className={styles.eventDate}>
+                <Icon name="calendar" size={16} />
                 {event.date}
               </div>
             </div>
             
-            <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+            <h3 className={styles.eventTitle}>
               {event.title}
             </h3>
             
-            <p className="text-gray-600 mb-4 line-clamp-3">
+            <p className={styles.eventDescription}>
               {event.description}
             </p>
             
-            <div className="flex items-center text-sm text-gray-500 mb-4">
-              <Icon name="MapPin" size={16} className="mr-1" />
+            <div className={styles.eventLocation}>
+              <Icon name="map-pin" size={16} />
               {event.location}
             </div>
             
             {event.tags && (
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className={styles.eventTags}>
                 {event.tags.slice(0, 3).map((tag, index) => (
-                  <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                  <span key={index} className={styles.eventTag}>
                     {tag}
                   </span>
                 ))}
@@ -184,63 +179,61 @@ const EventsPage = () => {
             )}
             
             {type === 'ongoing' && event.participantCount && (
-              <div className="mb-4">
-                <div className="flex justify-between text-sm text-gray-600 mb-1">
+              <div className={styles.participantProgress}>
+                <div className={styles.participantText}>
                   <span>Participants</span>
                   <span>{event.participantCount}/{event.maxParticipants}</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className={styles.participantBar}>
                   <div 
-                    className="bg-gradient-to-r from-purple-600 to-orange-600 h-2 rounded-full"
+                    className={styles.participantFill}
                     style={{ width: `${(event.participantCount / event.maxParticipants) * 100}%` }}
                   ></div>
                 </div>
               </div>
             )}
             
-            <div className="flex justify-between items-center">
+            <div className={styles.eventActions}>
               {event.prize && (
-                <span className="text-sm font-semibold text-green-600">
+                <span className={styles.eventPrize}>
                   Prize: {event.prize}
                 </span>
               )}
               
               {type === 'ongoing' && event.registrationOpen && (
-                <Button size="sm" className="ml-auto">
+                <button className={`${styles.eventButton} ${styles.primary}`}>
                   Register Now
-                </Button>
+                </button>
               )}
               
               {type === 'upcoming' && (
-                <Button 
-                  size="sm" 
-                  variant={event.registrationOpen ? 'primary' : 'outline'}
+                <button 
+                  className={`${styles.eventButton} ${event.registrationOpen ? styles.primary : styles.outline}`}
                   disabled={!event.registrationOpen}
-                  className="ml-auto"
                 >
                   {event.registrationOpen ? 'Register' : 'Registration Soon'}
-                </Button>
+                </button>
               )}
               
               {type === 'past' && (
-                <div className="flex gap-2 ml-auto">
+                <div className={styles.eventActions}>
                   {event.gallery && (
-                    <Button size="sm" variant="outline">
-                      <Icon name="Image" size={16} className="mr-1" />
+                    <button className={`${styles.eventButton} ${styles.outline}`}>
+                      <Icon name="image" size={16} />
                       Gallery
-                    </Button>
+                    </button>
                   )}
                   {event.report && (
-                    <Button size="sm" variant="outline">
-                      <Icon name="Download" size={16} className="mr-1" />
+                    <button className={`${styles.eventButton} ${styles.outline}`}>
+                      <Icon name="download" size={16} />
                       Report
-                    </Button>
+                    </button>
                   )}
                 </div>
               )}
             </div>
           </div>
-        </Card>
+        </div>
       </motion.div>
     );
   };
@@ -269,20 +262,20 @@ const EventsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className={styles.eventsPageContainer}>
       {/* Page Header */}
-      <section className="mit-adt-gradient text-white py-20">
-        <div className="container">
+      <section className={styles.eventsHeader}>
+        <div className={styles.container}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className={styles.eventsHeaderContent}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className={styles.eventsTitle}>
               Events & Activities
             </h1>
-            <p className="text-xl md:text-2xl text-purple-100 leading-relaxed">
+            <p className={styles.eventsSubtitle}>
               Discover upcoming hackathons, workshops, competitions, and conferences at MIT ADT University
             </p>
           </motion.div>
@@ -290,31 +283,29 @@ const EventsPage = () => {
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-8 bg-white shadow-sm">
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+      <section className={styles.searchFilterSection}>
+        <div className={styles.container}>
+          <div className={styles.searchFilterContainer}>
             {/* Search Bar */}
-            <div className="relative flex-1 max-w-md">
-              <Icon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <div className={styles.searchInputContainer}>
+              <Icon name="search" size={20} className={styles.searchIcon} />
               <input
                 type="text"
                 placeholder="Search events..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className={styles.searchInput}
               />
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
+            <div className={styles.categoryFilters}>
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedCategory === category.id
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  className={`${styles.categoryFilter} ${
+                    selectedCategory === category.id ? styles.active : styles.inactive
                   }`}
                 >
                   {category.name}
@@ -326,10 +317,10 @@ const EventsPage = () => {
       </section>
 
       {/* Event Tabs */}
-      <section className="py-8">
-        <div className="container">
-          <div className="flex justify-center mb-8">
-            <div className="bg-gray-100 rounded-lg p-1 flex">
+      <section className={styles.tabsSection}>
+        <div className={styles.container}>
+          <div className={styles.tabsContainer}>
+            <div className={styles.tabsWrapper}>
               {[
                 { id: 'ongoing', label: 'Ongoing Events', count: ongoingEvents.length },
                 { id: 'upcoming', label: 'Upcoming Events', count: upcomingEvents.length },
@@ -338,10 +329,8 @@ const EventsPage = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-md text-sm font-medium transition-colors ${
-                    activeTab === tab.id
-                      ? 'bg-white text-purple-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                  className={`${styles.tab} ${
+                    activeTab === tab.id ? styles.active : styles.inactive
                   }`}
                 >
                   {tab.label} ({tab.count})
@@ -351,17 +340,17 @@ const EventsPage = () => {
           </div>
 
           {/* Events Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={styles.eventsGrid}>
             {getCurrentEvents().map((event) => (
               <EventCard key={event.id} event={event} type={activeTab} />
             ))}
           </div>
 
           {getCurrentEvents().length === 0 && (
-            <div className="text-center py-16">
-              <Icon name="Calendar" size={64} className="mx-auto text-gray-300 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No events found</h3>
-              <p className="text-gray-500">
+            <div className={styles.emptyState}>
+              <Icon name="calendar" size={64} className={styles.emptyStateIcon} />
+              <h3 className={styles.emptyStateTitle}>No events found</h3>
+              <p className={styles.emptyStateText}>
                 {searchTerm || selectedCategory !== 'all' 
                   ? 'Try adjusting your search or filter criteria'
                   : 'Check back soon for new events!'
@@ -373,30 +362,37 @@ const EventsPage = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 mit-adt-gradient text-white">
-        <div className="container text-center">
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className={styles.ctaContent}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className={styles.ctaTitle}>
               Want to Organize an Event?
             </h2>
-            <p className="text-xl text-purple-100 mb-8 leading-relaxed">
+            <p className={styles.ctaText}>
               Have an innovative idea for a workshop, hackathon, or seminar? We'd love to help you bring it to life.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-purple-900 hover:bg-gray-100">
-                <Icon name="Plus" size={20} className="mr-2" />
+            <div className={styles.ctaButtons}>
+              <button className={`${styles.ctaButton} ${styles.secondary}`}>
+                <Icon name="plus" size={20} />
                 Propose Event
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900">
-                <Icon name="MessageCircle" size={20} className="mr-2" />
+              </button>
+              <button className={`${styles.ctaButton} ${styles.outline}`}>
+                <Icon name="message-circle" size={20} />
                 Get Support
-              </Button>
+              </button>
+              <button 
+                className={`${styles.ctaButton} ${styles.outline}`}
+                onClick={() => window.open('https://mituniversity.ac.in/', '_blank')}
+              >
+                <Icon name="external-link" size={20} />
+                Visit Main Website
+              </button>
             </div>
           </motion.div>
         </div>
