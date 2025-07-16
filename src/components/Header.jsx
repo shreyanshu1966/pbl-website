@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const userMenuRef = useRef(null);
+  
   const navigationItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -14,6 +20,41 @@ const Header = () => {
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    logout();
+    setIsUserMenuOpen(false);
+    navigate('/');
+  };
+
+  const getUserInitials = (name) => {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
+
+  const getRoleColor = (role) => {
+    const colors = {
+      student: 'bg-blue-500',
+      mentor: 'bg-green-500',
+      admin: 'bg-red-500',
+      evaluator: 'bg-purple-500'
+    };
+    return colors[role] || 'bg-gray-500';
+  };
 
   return (
     <motion.header 
@@ -51,11 +92,64 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button / User Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login" className="btn btn-primary">
-              Login
-            </Link>
+            {user ? (
+              <div className="relative" ref={userMenuRef}>
+                <button
+                  onClick={toggleUserMenu}
+                  className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                >
+                  <div className={`w-8 h-8 rounded-full ${getRoleColor(user.role)} flex items-center justify-center text-white text-sm font-semibold`}>
+                    {getUserInitials(user.name)}
+                  </div>
+                  <div className="text-left">
+                    <div className="text-sm font-medium text-gray-700">{user.name}</div>
+                    <div className="text-xs text-gray-500 capitalize">{user.role}</div>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                <AnimatePresence>
+                  {isUserMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                    >
+                      <Link
+                        to="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <hr className="my-1 border-gray-200" />
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200"
+                      >
+                        Logout
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link to="/login" className="btn btn-primary">
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button - Only visible on mobile */}
@@ -108,13 +202,42 @@ const Header = () => {
                 </Link>
               ))}
               
-              <Link 
-                to="/login" 
-                className="btn btn-primary mx-3 mt-3"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Login
-              </Link>
+              {user ? (
+                <>
+                  <Link 
+                    to="/dashboard" 
+                    className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <div className="px-3 py-2">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <div className={`w-6 h-6 rounded-full ${getRoleColor(user.role)} flex items-center justify-center text-white text-xs font-semibold`}>
+                        {getUserInitials(user.name)}
+                      </div>
+                      <div>
+                        <div className="text-sm font-medium text-gray-700">{user.name}</div>
+                        <div className="text-xs text-gray-500 capitalize">{user.role}</div>
+                      </div>
+                    </div>
+                    <button 
+                      onClick={handleLogout}
+                      className="w-full text-left text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-colors duration-200"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <Link 
+                  to="/login" 
+                  className="btn btn-primary mx-3 mt-3"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Login
+                </Link>
+              )}
             </nav>
           </motion.div>
         )}

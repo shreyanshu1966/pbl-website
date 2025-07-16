@@ -1,53 +1,86 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useAuth } from '../contexts/AuthContext';
+import { Navigate, useLocation } from 'react-router-dom';
 import { Icon, Button, Card } from '../components';
 
 const LoginPage = () => {
+  const { login, isAuthenticated } = useAuth();
+  const location = useLocation();
   const [formData, setFormData] = useState({
-    enrollmentNumber: '',
-    password: ''
+    email: '',
+    password: '',
+    role: 'student'
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  // Redirect if already authenticated
+  if (isAuthenticated) {
+    const from = location.state?.from?.pathname || '/dashboard';
+    return <Navigate to={from} replace />;
+  }
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+  const demoCredentials = [
+    {
+      role: 'student',
+      email: 'student@mitadt.edu.in',
+      name: 'Student Demo',
+      description: 'Access student dashboard to submit projects and view feedback',
+      icon: 'user',
+      color: 'blue'
+    },
+    {
+      role: 'mentor',
+      email: 'mentor@mitadt.edu.in',
+      name: 'Mentor Demo',
+      description: 'Guide students and provide feedback on their projects',
+      icon: 'users',
+      color: 'green'
+    },
+    {
+      role: 'admin',
+      email: 'admin@mitadt.edu.in',
+      name: 'Admin Demo',
+      description: 'Manage users, groups, and export comprehensive reports',
+      icon: 'shield',
+      color: 'purple'
+    },
+    {
+      role: 'evaluator',
+      email: 'evaluator@mitadt.edu.in',
+      name: 'Evaluator Demo',
+      description: 'Review and evaluate projects during assessment phases',
+      icon: 'clipboard-check',
+      color: 'orange'
     }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.enrollmentNumber) {
-      newErrors.enrollmentNumber = 'Enrollment number is required';
-    } else if (!/^\d{8,12}$/.test(formData.enrollmentNumber)) {
-      newErrors.enrollmentNumber = 'Please enter a valid enrollment number (8-12 digits)';
-    }
-    
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    const result = await login(formData.email, formData.password);
+    
+    if (result.success) {
+      // Redirect will happen automatically due to isAuthenticated check
+    } else {
+      setError(result.error);
+    }
+    
+    setLoading(false);
+  };
+
+  const handleDemoLogin = (email) => {
+    setFormData(prev => ({ ...prev, email }));
+  };
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
     
     if (!validateForm()) {
       return;
