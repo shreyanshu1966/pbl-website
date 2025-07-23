@@ -29,24 +29,22 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-50 via-gray-50 to-blue-50">
+    <section className="relative overflow-hidden bg-gray-50 border-b-4 border-gray-200">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-100 rounded-full opacity-50"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-20 bg-gradient-to-br from-purple-200 to-blue-200"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full opacity-20"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-100 rounded-full opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-5 bg-gray-200"></div>
       </div>
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
           {/* Content */}
           <div className="space-y-8">            <motion.div {...fadeInUp}>
-              <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 bg-purple-100 text-purple-800">
-                🚀 Welcome to MIT ADT PBL
-              </span>
+              
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900">
                 Learn by{' '}
-                <span className="bg-gradient-to-r from-purple-800 to-blue-800 bg-clip-text text-transparent">
+                <span className="text-[#761b89]">
                   Building
                 </span>{' '}
                 Real Projects
@@ -63,7 +61,7 @@ const HeroSection = () => {
             <motion.div {...fadeInUpDelayMore} className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/projects" 
-                className="btn btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                className="btn btn-purple text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               >
                 Explore Projects
               </Link>
@@ -77,7 +75,7 @@ const HeroSection = () => {
                 href="https://mituniversity.ac.in/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-secondary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 bg-gradient-to-r from-orange-500 to-red-600 text-white border-none hover:from-red-600 hover:to-orange-500"
+                className="btn btn-secondary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               >
                 Visit Main Website
               </a>
@@ -97,7 +95,7 @@ const HeroSection = () => {
                   transition={{ duration: 0.4, delay: 0.8 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-2xl lg:text-3xl font-bold mb-1 text-purple-600">
+                  <div className="text-2xl lg:text-3xl font-bold mb-1 text-[#761b89]">
                     {stat.number}
                   </div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
@@ -111,7 +109,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <div className="relative z-10">
               {/* Main illustration container */}
@@ -161,23 +159,6 @@ const HeroSection = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Floating elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-              >
-                ⚡
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-              >
-                🎯
-              </motion.div>
             </div>            {/* Background decoration */}
             <div className="absolute -inset-4 rounded-2xl opacity-20 blur-lg" style={{background: 'linear-gradient(135deg, var(--color-primary-200), var(--color-secondary-200))'}}></div>
           </motion.div>

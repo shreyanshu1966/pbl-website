@@ -10,8 +10,7 @@ const NewsUpdatesSection = () => {
       summary: "Team develops sustainable water purification system for rural communities",
       date: "June 10, 2025",
       author: "Dr. Sarah Johnson",
-      category: "Achievement",
-      image: "/images/award-news.jpg"
+      category: "Achievement"
     },
     {
       title: "New Partnership with Global Tech Leaders",

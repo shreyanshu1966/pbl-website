@@ -250,7 +250,7 @@ const MultidisciplinaryProjectsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="mit-adt-gradient py-20">
+      <section className="bg-gray-50 py-16 border-b-4 border-gray-200">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -258,10 +258,10 @@ const MultidisciplinaryProjectsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-yellow-100 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Multidisciplinary Projects
             </h1>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Collaborative projects bringing together diverse disciplines to solve 
               complex global challenges and advance UN Sustainable Development Goals
             </p>

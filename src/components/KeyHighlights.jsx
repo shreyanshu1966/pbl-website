@@ -86,7 +86,7 @@ const KeyHighlights = () => {
               <h3 className="text-2xl font-bold text-purple-800">
                 Upcoming Events
               </h3>
-              <Icon name="calendar" size={32} className="text-purple-600" />
+              <Icon name="calendar" size={32} style={{color: '#761b89'}} />
             </div>
             
             {/* Countdown Timer */}
@@ -129,7 +129,7 @@ const KeyHighlights = () => {
               <h3 className="text-2xl font-bold text-blue-800">
                 Latest Downloads
               </h3>
-              <Icon name="download" size={32} className="text-blue-600" />
+              <Icon name="download" size={32} style={{color: '#761b89'}} />
             </div>
             
             <div className="space-y-4 mb-6">
@@ -143,7 +143,7 @@ const KeyHighlights = () => {
                     <div className="font-semibold text-blue-800">{file.name}</div>
                     <div className="text-sm text-blue-600">{file.size} • {file.downloads} downloads</div>
                   </div>
-                  <Icon name="download" size={20} className="text-blue-600" />
+                  <Icon name="download" size={20} style={{color: '#761b89'}} />
                 </div>
               ))}
             </div>
@@ -164,7 +164,7 @@ const KeyHighlights = () => {
               <h3 className="text-2xl font-bold text-gray-800">
                 Tech Pool Directory
               </h3>
-              <Icon name="database" size={32} className="text-yellow-600" />
+              <Icon name="database" size={32} style={{color: '#761b89'}} />
             </div>
             
             <div className="grid grid-cols-2 gap-4 mb-6">
