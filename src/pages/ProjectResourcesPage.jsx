@@ -191,8 +191,8 @@ const ProjectResourcesPage = () => {
   const getFileIcon = (type) => {
     switch (type) {
       case 'pdf': return 'file-text';
-      case 'docx': return 'file';
-      case 'pptx': return 'presentation';
+      case 'docx': return 'file-alt';
+      case 'pptx': return 'file-alt';
       case 'xlsx': return 'sheet';
       default: return 'download';
     }
@@ -339,7 +339,7 @@ const ProjectResourcesPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
-      <section className="mit-adt-gradient text-white py-20">
+      <section className="bg-gray-50 py-16 border-b-4 border-gray-200">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -347,15 +347,11 @@ const ProjectResourcesPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <div className="flex items-center justify-center space-x-2 text-sm mb-4">
-              <span className="text-blue-200">Home</span>
-              <Icon name="chevron-right" size={14} />
-              <span className="text-yellow-200 font-semibold">Project Resources</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-yellow-100">
+
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Project Resources
             </h1>
-            <p className="text-xl md:text-2xl leading-relaxed text-blue-100">
+            <p className="text-xl md:text-2xl leading-relaxed text-gray-600">
               Access templates, guidelines, and connect with experts to support your PBL journey
             </p>
           </motion.div>

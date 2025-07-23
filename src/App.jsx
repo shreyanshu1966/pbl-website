@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import AboutPBLPage from './pages/AboutPBLPage';
 import EventsPage from './pages/EventsPage';
@@ -22,6 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <AuthProvider>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

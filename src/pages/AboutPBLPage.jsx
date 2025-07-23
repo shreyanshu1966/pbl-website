@@ -25,7 +25,7 @@ const AboutPBLPage = () => {
       description: 'Contribute to cutting-edge research with publication and patent opportunities.'
     },
     {
-      icon: 'globe',
+      icon: 'globe-alt',
       title: 'Global Impact',
       description: 'Address UN Sustainable Development Goals through meaningful project work.'
     },
@@ -72,7 +72,7 @@ const AboutPBLPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
-      <section className="mit-adt-gradient text-white py-20">
+      <section className="bg-gray-50 py-16 border-b-4 border-gray-200">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -80,10 +80,10 @@ const AboutPBLPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-yellow-100">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               About Project-Based Learning
             </h1>
-            <p className="text-xl md:text-2xl leading-relaxed text-blue-100">
+            <p className="text-xl md:text-2xl leading-relaxed text-gray-600">
               Transforming education through real-world problem solving and innovation at MIT ADT University
             </p>
           </motion.div>
@@ -129,7 +129,7 @@ const AboutPBLPage = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg p-8">
+              <div className="bg-blue-50 rounded-lg p-8">
                 <div className="text-center space-y-6">
                   <div className="w-20 h-20 bg-purple-800 rounded-full flex items-center justify-center mx-auto">
                     <Icon name="lightbulb" size={32} className="text-white" />
@@ -190,7 +190,7 @@ const AboutPBLPage = () => {
               >
                 <Card className="h-full hover:shadow-lg transition-shadow duration-300">
                   <div className="text-center p-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-800 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{backgroundColor: '#761b89'}}>
                       <Icon name={benefit.icon} size={24} className="text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -227,7 +227,7 @@ const AboutPBLPage = () => {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-800 to-blue-800 rounded-full hidden md:block z-10"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full rounded-full hidden md:block z-10" style={{backgroundColor: '#761b89'}}></div>
             
             <div className="space-y-12">
               {implementationStages.map((stage, index) => (
@@ -244,7 +244,7 @@ const AboutPBLPage = () => {
                   <div className="flex-1">
                     <Card className="p-8 hover:shadow-lg transition-shadow duration-300">
                       <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-r from-purple-800 to-blue-800 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-4" style={{backgroundColor: '#761b89'}}>
                           {index + 1}
                         </div>
                         <div>

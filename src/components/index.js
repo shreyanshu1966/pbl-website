@@ -11,6 +11,7 @@ export { default as CallToActionSection } from './CallToActionSection';
 export { default as Layout } from './Layout';
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
+export { default as ScrollToTop } from './ScrollToTop';
 
 // UI components
 export { default as Button } from './Button';

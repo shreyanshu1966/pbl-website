@@ -23,7 +23,7 @@ const AnnouncementTicker = () => {
   }, [announcements.length]);
 
   return (
-    <section style={{backgroundColor: 'var(--color-primary-600)'}} className="py-3 overflow-hidden">
+    <section style={{backgroundColor: '#761b89'}} className="py-3 overflow-hidden">
       <div className="container">
         <div className="flex items-center">
           <div className="flex items-center text-white font-semibold mr-6 whitespace-nowrap">

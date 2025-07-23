@@ -26,7 +26,6 @@ const EventsPage = () => {
       endDate: new Date('2025-06-25'),
       location: 'MIT ADT Campus, Pune',
       description: 'Annual innovation challenge focusing on sustainable technology solutions.',
-      image: '/api/placeholder/600/300',
       registrationOpen: true,
       participantCount: 450,
       maxParticipants: 500,
@@ -41,7 +40,6 @@ const EventsPage = () => {
       endDate: new Date('2025-06-22'),
       location: 'Computer Lab A',
       description: 'Intensive 3-day workshop on Artificial Intelligence and Machine Learning.',
-      image: '/api/placeholder/600/300',
       registrationOpen: true,
       participantCount: 85,
       maxParticipants: 100,
@@ -59,7 +57,6 @@ const EventsPage = () => {
       startDate: new Date('2025-07-05'),
       location: 'Innovation Hub',
       description: '48-hour hackathon to develop smart city solutions.',
-      image: '/api/placeholder/600/300',
       registrationOpen: true,
       tags: ['Smart Cities', 'IoT', 'Urban Planning'],
       prize: '₹3,00,000'
@@ -72,7 +69,6 @@ const EventsPage = () => {
       startDate: new Date('2025-07-15'),
       location: 'Convention Center',
       description: 'Exhibition showcasing blockchain innovations and applications.',
-      image: '/api/placeholder/600/300',
       registrationOpen: true,
       tags: ['Blockchain', 'Cryptocurrency', 'DeFi'],
       expectedAttendees: 1000
@@ -85,7 +81,6 @@ const EventsPage = () => {
       startDate: new Date('2025-08-02'),
       location: 'Auditorium',
       description: 'International symposium on renewable energy technologies.',
-      image: '/api/placeholder/600/300',
       registrationOpen: false,
       registrationOpenDate: new Date('2025-06-30'),
       tags: ['Renewable Energy', 'Sustainability', 'Research']
@@ -100,7 +95,6 @@ const EventsPage = () => {
       date: 'December 10-12, 2024',
       location: 'MIT ADT Campus',
       description: 'Annual technology festival with exhibitions, competitions, and workshops.',
-      image: '/api/placeholder/600/300',
       participants: 2500,
       projects: 150,
       tags: ['Technology', 'Innovation', 'Student Projects'],
@@ -128,21 +122,36 @@ const EventsPage = () => {
         viewport={{ once: true }}
       >
         <div className={styles.eventCard}>
-          <div className={styles.eventImageContainer}>
-            <img 
-              src={event.image} 
-              alt={event.title}
-              className={styles.eventImage}
-            />
-            <div className={styles.eventStatus + ' ' + styles[type]}>
-              {type === 'ongoing' ? 'Live' : type === 'upcoming' ? 'Upcoming' : 'Completed'}
-            </div>
-            {countdown && (
-              <div className={styles.eventCountdown}>
-                {countdown.days}d {countdown.hours}h left
+          {event.image && (
+            <div className={styles.eventImageContainer}>
+              <img 
+                src={event.image} 
+                alt={event.title}
+                className={styles.eventImage}
+              />
+              <div className={styles.eventStatus + ' ' + styles[type]}>
+                {type === 'ongoing' ? 'Live' : type === 'upcoming' ? 'Upcoming' : 'Completed'}
               </div>
-            )}
-          </div>
+              {countdown && (
+                <div className={styles.eventCountdown}>
+                  {countdown.days}d {countdown.hours}h left
+                </div>
+              )}
+            </div>
+          )}
+          
+          {!event.image && (
+            <div className={styles.eventHeaderNoImage}>
+              <div className={styles.eventStatus + ' ' + styles[type]}>
+                {type === 'ongoing' ? 'Live' : type === 'upcoming' ? 'Upcoming' : 'Completed'}
+              </div>
+              {countdown && (
+                <div className={styles.eventCountdown}>
+                  {countdown.days}d {countdown.hours}h left
+                </div>
+              )}
+            </div>
+          )}
           
           <div className={styles.eventContent}>
             <div className={styles.eventMeta}>

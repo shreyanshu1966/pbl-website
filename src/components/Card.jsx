@@ -261,6 +261,20 @@ export const NewsCard = ({
   className = '',
   ...props 
 }) => {
+  // Function to get icon based on category
+  const getCategoryIcon = (category) => {
+    switch (category?.toLowerCase()) {
+      case 'achievement':
+        return 'trophy';
+      case 'partnership':
+        return 'handshake';
+      case 'success story':
+        return 'star';
+      default:
+        return 'info';
+    }
+  };
+
   const content = (
     <Card className={`news-card ${className}`} hover clickable={!!href || !!to} {...props}>
       {image && (
@@ -270,7 +284,10 @@ export const NewsCard = ({
       )}
       <div className="news-card-content">
         {category && (
-          <span className="news-card-category">{category}</span>
+          <span className="news-card-category">
+            <Icon name={getCategoryIcon(category)} size={14} />
+            {category}
+          </span>
         )}
         <h3 className="news-card-title">{title}</h3>
         <p className="news-card-summary">{summary}</p>

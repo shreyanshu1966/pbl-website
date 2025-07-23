@@ -63,14 +63,14 @@ const ManagementTeamPage = () => {
     {
       type: 'Website',
       details: 'www.mituniversity.ac.in',
-      icon: 'globe'
+      icon: 'globe-alt'
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="mit-adt-gradient text-white py-20">
+      <section className="bg-gray-50 py-16 border-b-4 border-gray-200">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -78,10 +78,10 @@ const ManagementTeamPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-100">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Management Team
             </h1>
-            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-blue-100">
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-600">
               Meet the leadership driving innovation and excellence in Project-Based Learning at MIT ADT University
             </p>
           </motion.div>
@@ -329,7 +329,7 @@ const ManagementTeamPage = () => {
                 viewport={{ once: true }}
               >
                 <Card className="p-6 text-center hover:shadow-lg transition-shadow duration-300">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name={info.icon} size={24} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{info.type}</h3>

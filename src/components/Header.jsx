@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -8,6 +8,7 @@ const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const userMenuRef = useRef(null);
   
   const navigationItems = [
@@ -48,12 +49,20 @@ const Header = () => {
 
   const getRoleColor = (role) => {
     const colors = {
-      student: 'bg-blue-500',
-      mentor: 'bg-green-500',
-      admin: 'bg-red-500',
-      evaluator: 'bg-purple-500'
+      'student': 'bg-blue-500',
+      'mentor': 'bg-green-500',
+      'evaluator': 'bg-purple-500',
+      'admin': 'bg-red-500',
+      'default': 'bg-gray-500'
     };
-    return colors[role] || 'bg-gray-500';
+    return colors[role] || colors.default;
+  };
+
+  const isActiveRoute = (href) => {
+    if (href === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(href);
   };
 
   return (
@@ -80,16 +89,22 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="text-gray-700 hover:text-purple-800 font-semibold transition-all duration-300 hover:scale-105 relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-800 transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
+            {navigationItems.map((item) => {
+              const isActive = isActiveRoute(item.href);
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`font-semibold transition-all duration-300 hover:scale-105 px-4 py-2 rounded-lg ${
+                    isActive 
+                      ? 'text-white bg-[#761b89]' 
+                      : 'text-gray-700 hover:text-white hover:bg-[#761b89]'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA Button / User Menu */}
@@ -146,7 +161,7 @@ const Header = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <Link to="/login" className="btn btn-primary">
+              <Link to="/login" className="btn btn-purple">
                 Login
               </Link>
             )}
@@ -191,16 +206,23 @@ const Header = () => {
             className="block md:!hidden py-4 border-t border-gray-200"
           >
             <nav className="flex flex-col space-y-3">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50 transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigationItems.map((item) => {
+                const isActive = isActiveRoute(item.href);
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`font-medium px-3 py-2 rounded-md transition-colors duration-200 ${
+                      isActive 
+                        ? 'text-white bg-[#761b89]' 
+                        : 'text-gray-700 hover:text-white hover:bg-[#761b89]'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               
               {user ? (
                 <>
@@ -232,7 +254,7 @@ const Header = () => {
               ) : (
                 <Link 
                   to="/login" 
-                  className="btn btn-primary mx-3 mt-3"
+                  className="btn btn-purple mx-3 mt-3"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Login

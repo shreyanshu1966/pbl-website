@@ -330,6 +330,13 @@ const ContactUsPage = () => {
                     </div>
                   </div>
                   <div className="flex items-center">
+                    <Icon name="globe-alt" size={20} className="text-purple-600 mr-3" />
+                    <div>
+                      <div className="font-medium">mituniversity.ac.in</div>
+                      <div className="text-sm text-gray-600">Official Website</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
                     <Icon name="clock" size={20} className="text-purple-600 mr-3" />
                     <div>
                       <div className="font-medium">Mon - Fri: 9:00 AM - 6:00 PM</div>
@@ -664,6 +671,7 @@ const ContactUsPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="hidden lg:block"
             >
               <Card className="p-4 h-full">
                 <div className="bg-gray-200 rounded-lg h-full min-h-[400px] flex items-center justify-center">                  <div className="text-center text-gray-500">
